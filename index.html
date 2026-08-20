@@ -25,79 +25,97 @@ body{
     overflow-x:hidden;
 }
 
-/* ==============================
-   FALLING STARS
-============================== */
+/* =========================
+   النجوم
+========================= */
 
-#falling{
+#stars{
     position:fixed;
     inset:0;
-    overflow:hidden;
     pointer-events:none;
-    z-index:5;
+    overflow:hidden;
+    z-index:101;
 }
 
-.fall{
+.star{
     position:absolute;
-    top:-40px;
+    color:#9b8580;
+    font-size:10px;
     opacity:0;
+    animation:twinkle 4s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+    0%,100%{
+        opacity:0;
+        transform:scale(.6);
+    }
+
+    50%{
+        opacity:.75;
+        transform:scale(1.2);
+    }
+}
+
+/* =========================
+   القلوب والنجوم الساقطة
+========================= */
+
+.petal{
+    position:fixed;
+    top:-30px;
+    color:#b99991;
+    opacity:.55;
+    z-index:102;
+    pointer-events:none;
     animation:fall linear infinite;
 }
 
 @keyframes fall{
     0%{
-        transform:translateY(-40px) rotate(0deg);
-        opacity:0;
-    }
-
-    15%{
-        opacity:.65;
-    }
-
-    80%{
-        opacity:.5;
+        transform:translateY(-30px) rotate(0deg);
     }
 
     100%{
         transform:translateY(110vh) rotate(360deg);
-        opacity:0;
     }
 }
 
-
-/* ==============================
+/* =========================
    COUNTDOWN
-============================== */
+========================= */
 
 #intro{
     position:fixed;
     inset:0;
+    z-index:100;
     background:#faf7f5;
     display:flex;
     align-items:center;
     justify-content:center;
-    z-index:100;
-    overflow:hidden;
     transition:opacity 1.2s ease;
 }
 
 #count{
+    position:relative;
+    z-index:105;
+
     font-family:'Cormorant Garamond',serif;
+    font-size:150px;
     font-weight:300;
-    font-size:160px;
-    line-height:1;
-    letter-spacing:8px;
+    letter-spacing:10px;
     color:#403938;
-    animation:numberIn .9s ease;
+
+    animation:pulse .9s ease;
 }
 
-@keyframes numberIn{
+@keyframes pulse{
     0%{
         opacity:0;
         transform:scale(.65);
     }
 
-    55%{
+    50%{
         opacity:1;
         transform:scale(1.08);
     }
@@ -108,26 +126,29 @@ body{
     }
 }
 
-
-/* ==============================
+/* =========================
    PASSWORD
-============================== */
+========================= */
 
 #lock{
     position:fixed;
     inset:0;
     z-index:90;
-    background:#faf7f5;
+    background:rgba(250,247,245,.98);
+
     display:none;
     align-items:center;
     justify-content:center;
+
     text-align:center;
     padding:25px;
+
+    transition:opacity 1s ease;
 }
 
 .lock-box{
-    width:100%;
     max-width:390px;
+    width:100%;
 }
 
 .small{
@@ -145,14 +166,21 @@ body{
 
 #password{
     width:100%;
+
     border:0;
     border-bottom:1px solid #b9aaa5;
+
     background:transparent;
+
     padding:14px 5px;
+
     text-align:center;
-    outline:none;
-    font-family:'Tajawal',sans-serif;
+
+    font-family:'Tajawal';
     font-size:17px;
+
+    outline:none;
+
     color:#403938;
 }
 
@@ -162,13 +190,20 @@ body{
 
 #enter{
     margin-top:28px;
+
     border:1px solid #9e8e89;
     background:transparent;
+
     padding:11px 34px;
+
     border-radius:30px;
-    font-family:'Tajawal',sans-serif;
-    color:#403938;
+
+    font-family:'Tajawal';
+
     cursor:pointer;
+
+    color:#403938;
+
     transition:.3s;
 }
 
@@ -179,110 +214,90 @@ body{
 
 #error{
     height:20px;
-    margin-top:12px;
-    font-size:12px;
+
     color:#a36f6b;
+
+    font-size:12px;
+
+    margin-top:12px;
 }
 
-
-/* ==============================
+/* =========================
    MAIN
-============================== */
+========================= */
 
 #main{
+    min-height:100vh;
+
     opacity:0;
-    transition:opacity 1.5s ease;
+
+    transition:opacity 2s ease;
+
     position:relative;
+
     z-index:2;
 }
 
-
-/* ==============================
+/* =========================
    ENVELOPE SECTION
-============================== */
+========================= */
 
-.letter-section{
+#letterSection{
     min-height:100vh;
+
     display:flex;
-    justify-content:center;
+
     align-items:center;
-    padding:40px 20px;
+    justify-content:center;
+
+    padding:70px 20px;
+
+    position:relative;
 }
 
-.letter-area{
+.envelope-area{
     text-align:center;
+
+    width:100%;
 }
 
 .letter-title{
     font-family:'Cormorant Garamond',serif;
+
+    font-size:21px;
+
     color:#a18d88;
-    font-size:20px;
+
     letter-spacing:3px;
-    margin-bottom:35px;
+
+    margin-bottom:45px;
 }
 
-
-/* ==============================
-   ENVELOPE
-============================== */
+/* =========================
+   ENVELOPE WRAPPER
+========================= */
 
 .envelope-wrap{
     position:relative;
+
     width:340px;
-    height:280px;
-    margin:auto;
+    height:350px;
+
+    margin:0 auto;
 }
-
-/*
-   الورقة خارج جسم الظرف في طبقة
-   أعلى منه، عشان تظهر كاملة.
-*/
-
-.paper{
-    position:absolute;
-    left:50%;
-    bottom:35px;
-
-    width:270px;
-    min-height:210px;
-
-    transform:translateX(-50%) translateY(80px);
-
-    background:#fffdfb;
-    border:1px solid #eee3df;
-
-    padding:28px 22px;
-
-    box-shadow:
-        0 10px 30px rgba(70,45,40,.12);
-
-    opacity:0;
-
-    z-index:1;
-
-    transition:
-        transform 1.2s ease,
-        opacity 1s ease;
-}
-
-.paper-text{
-    font-family:'Cormorant Garamond',serif;
-    font-size:22px;
-    line-height:1.7;
-}
-
 
 /* الظرف نفسه */
 
 .envelope{
     position:absolute;
+
     left:50%;
-    bottom:0;
+    bottom:20px;
+
+    transform:translateX(-50%);
 
     width:340px;
     height:210px;
-
-    transform:translateX(-50%);
 
     background:#eadbd6;
 
@@ -292,15 +307,13 @@ body{
         0 18px 45px rgba(70,45,40,.16);
 
     z-index:3;
-
-    overflow:visible;
 }
 
-
-/* الجزء السفلي */
+/* جسم الظرف */
 
 .envelope-front{
     position:absolute;
+
     inset:0;
 
     background:#eadbd6;
@@ -309,11 +322,8 @@ body{
 
     overflow:hidden;
 
-    z-index:3;
+    z-index:4;
 }
-
-
-/* مثلثات الظرف */
 
 .envelope-front:before{
     content:"";
@@ -328,17 +338,9 @@ body{
 
     border-style:solid;
 
-    border-width:
-        105px
-        170px
-        0
-        0;
+    border-width:105px 170px 0 0;
 
-    border-color:
-        #dfcdc7
-        transparent
-        transparent
-        transparent;
+    border-color:#dfcdc7 transparent transparent transparent;
 }
 
 .envelope-front:after{
@@ -354,21 +356,14 @@ body{
 
     border-style:solid;
 
-    border-width:
-        105px
-        0
-        0
-        170px;
+    border-width:105px 0 0 170px;
 
-    border-color:
-        #dfcdc7
-        transparent
-        transparent
-        transparent;
+    border-color:#dfcdc7 transparent transparent transparent;
 }
 
-
-/* flap */
+/* =========================
+   FLAP
+========================= */
 
 .flap{
     position:absolute;
@@ -382,11 +377,7 @@ body{
     background:#e3d1cb;
 
     clip-path:
-        polygon(
-            0 0,
-            100% 0,
-            50% 100%
-        );
+        polygon(0 0,100% 0,50% 100%);
 
     transform-origin:top center;
 
@@ -395,8 +386,66 @@ body{
     z-index:7;
 }
 
+/* =========================
+   PAPER
+========================= */
 
-/* القلب */
+.paper{
+    position:absolute;
+
+    left:50%;
+    bottom:20px;
+
+    width:275px;
+    min-height:220px;
+
+    padding:28px;
+
+    background:#fffdfb;
+
+    border:1px solid #eee3df;
+
+    box-shadow:
+        0 10px 30px rgba(70,45,40,.12);
+
+    transform:
+        translateX(-50%);
+
+    opacity:0;
+
+    z-index:2;
+
+    transition:
+        transform 1s ease,
+        opacity 1s ease;
+}
+
+#paperText{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:22px;
+
+    line-height:1.8;
+}
+
+/* عند الفتح */
+
+.envelope-wrap.open .flap{
+    transform:rotateX(180deg);
+}
+
+.envelope-wrap.open .paper{
+    opacity:1;
+
+    transform:
+        translate(-50%,-185px);
+
+    z-index:9;
+}
+
+/* =========================
+   HEART
+========================= */
 
 .heart{
     position:absolute;
@@ -404,7 +453,8 @@ body{
     left:50%;
     top:50%;
 
-    transform:translate(-50%,-50%);
+    transform:
+        translate(-50%,-50%);
 
     width:64px;
     height:64px;
@@ -414,6 +464,7 @@ body{
     background:#fff8f6;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
@@ -426,7 +477,7 @@ body{
 
     z-index:10;
 
-    transition:transform .3s ease;
+    transition:.3s;
 }
 
 .heart:hover{
@@ -435,109 +486,99 @@ body{
         scale(1.1);
 }
 
-
-/* عند فتح الظرف */
-
-.envelope-wrap.open .flap{
-    transform:rotateX(180deg);
-}
-
-.envelope-wrap.open .paper{
-    opacity:1;
-
-    transform:
-        translateX(-50%)
-        translateY(-115px);
-
-    z-index:8;
-}
-
 .envelope-wrap.open .heart{
     opacity:0;
+
     pointer-events:none;
 }
 
-
-/* ==============================
-   MESSAGE
-============================== */
+/* =========================
+   LOVE MESSAGE
+========================= */
 
 #loveMessage{
-    max-width:700px;
+    max-width:650px;
 
-    margin:auto;
+    margin:0 auto;
+
+    padding:80px 25px 120px;
 
     text-align:center;
-
-    padding:
-        50px
-        25px
-        130px;
 
     opacity:0;
 
     transform:translateY(30px);
 
-    transition:
-        opacity 1.5s ease,
-        transform 1.5s ease;
+    transition:1.5s ease;
 }
 
 #loveMessage.show{
     opacity:1;
+
     transform:translateY(0);
 }
 
 .message-small{
     font-size:11px;
+
     letter-spacing:4px;
+
     color:#a18d88;
 }
 
 .message-title{
     font-family:'Cormorant Garamond',serif;
+
     font-size:58px;
+
     font-weight:300;
+
     margin:18px 0 25px;
 }
 
 .message-text{
     font-family:'Cormorant Garamond',serif;
+
     font-size:25px;
+
     line-height:1.9;
+
     font-weight:300;
 }
 
 .signature{
     margin-top:35px;
+
     font-family:'Cormorant Garamond',serif;
+
     font-size:22px;
+
     font-style:italic;
 }
 
-
-/* ==============================
+/* =========================
    GALLERY
-============================== */
+========================= */
 
 .gallery-section{
-    padding:
-        70px
-        20px
-        130px;
+    padding:70px 20px 130px;
 
     text-align:center;
 }
 
 .gallery-title{
     font-family:'Cormorant Garamond',serif;
+
     font-size:50px;
+
     font-weight:300;
-    margin-bottom:50px;
+
+    margin-bottom:55px;
 }
 
 .gallery{
     max-width:900px;
+
     margin:auto;
 
     display:grid;
@@ -545,7 +586,7 @@ body{
     grid-template-columns:
         repeat(3,1fr);
 
-    gap:30px;
+    gap:25px;
 }
 
 .photo{
@@ -564,12 +605,12 @@ body{
 
     position:absolute;
 
-    top:-20px;
-    left:-16px;
+    top:-19px;
+    left:-15px;
 
-    font-size:24px;
+    font-size:23px;
 
-    z-index:5;
+    z-index:4;
 
     transform:rotate(-15deg);
 }
@@ -579,38 +620,37 @@ body{
 
     position:absolute;
 
-    bottom:-19px;
-    right:-14px;
+    bottom:-18px;
+    right:-13px;
 
-    font-size:24px;
+    font-size:23px;
 
-    z-index:5;
+    z-index:4;
 
     transform:rotate(10deg);
 }
 
 .photo img{
-    display:block;
-
     width:100%;
 
     aspect-ratio:4/5;
 
     object-fit:cover;
 
+    display:block;
+
     filter:saturate(.85);
 
-    transition:transform .7s ease;
+    transition:.8s;
 }
 
 .photo:hover img{
     transform:scale(1.03);
 }
 
-
-/* ==============================
+/* =========================
    GIFT
-============================== */
+========================= */
 
 .gift-section{
     min-height:75vh;
@@ -619,22 +659,22 @@ body{
 
     flex-direction:column;
 
-    justify-content:center;
-
     align-items:center;
+
+    justify-content:center;
 
     text-align:center;
 
-    padding:
-        60px
-        20px
-        150px;
+    padding:60px 20px 150px;
 }
 
 .gift-title{
     font-family:'Cormorant Garamond',serif;
+
     font-size:48px;
+
     font-weight:300;
+
     margin-bottom:40px;
 }
 
@@ -735,10 +775,9 @@ body{
     letter-spacing:2px;
 }
 
-
-/* ==============================
+/* =========================
    MUSIC BUTTON
-============================== */
+========================= */
 
 .music-note{
     position:fixed;
@@ -746,38 +785,44 @@ body{
     right:18px;
     bottom:18px;
 
+    border:1px solid #b9aaa5;
+
     width:40px;
     height:40px;
-
-    border:
-        1px solid
-        #b9aaa5;
 
     border-radius:50%;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
-    background:#faf7f5dd;
+    font-size:16px;
 
     z-index:30;
+
+    background:#faf7f5cc;
+
+    backdrop-filter:blur(5px);
 }
 
-
-/* ==============================
+/* =========================
    MOBILE
-============================== */
+========================= */
 
 @media(max-width:650px){
 
     #count{
-        font-size:165px;
+        font-size:145px;
+    }
+
+    .lock-box h1{
+        font-size:44px;
     }
 
     .envelope-wrap{
         width:300px;
-        height:270px;
+        height:340px;
     }
 
     .envelope{
@@ -787,23 +832,17 @@ body{
 
     .envelope-front:before{
         border-width:
-            95px
-            150px
-            0
-            0;
+            95px 150px 0 0;
     }
 
     .envelope-front:after{
         border-width:
-            95px
-            0
-            0
-            150px;
+            95px 0 0 150px;
     }
 
     .paper{
-        width:250px;
-        min-height:200px;
+        width:255px;
+        min-height:205px;
     }
 
     .message-title{
@@ -816,53 +855,36 @@ body{
 
     .gallery{
         grid-template-columns:1fr 1fr;
-        gap:18px;
+
+        gap:17px;
     }
 
     .gallery .photo:last-child{
         grid-column:1 / -1;
-        width:65%;
+
+        max-width:60%;
+
         margin:auto;
     }
 
     .gallery-title{
         font-size:43px;
     }
-
-    .gift-title{
-        font-size:42px;
-    }
 }
-
 </style>
 </head>
 
-
 <body>
 
+<!-- النجوم -->
+<div id="stars"></div>
 
-<!-- النجوم والقلوب -->
-
-<div id="falling"></div>
-
-
-<!-- ==============================
-     COUNTDOWN
-============================== -->
-
+<!-- العد التنازلي -->
 <div id="intro">
-
-    <div id="count">
-        3
-    </div>
-
+    <div id="count">3</div>
 </div>
 
-
-<!-- ==============================
-     PASSWORD
-============================== -->
-
+<!-- كلمة السر -->
 <div id="lock">
 
     <div class="lock-box">
@@ -892,81 +914,53 @@ body{
 
 </div>
 
-
-<!-- ==============================
-     MUSIC
-============================== -->
-
+<!-- الأغنية -->
 <audio id="music" loop preload="auto">
-    <source src="music.mp3" type="audio/mpeg">
+    <source src="./music.mp3" type="audio/mpeg">
 </audio>
 
-
-<!-- ==============================
-     MAIN
-============================== -->
-
+<!-- الموقع -->
 <main id="main">
-
 
     <!-- الظرف -->
 
-    <section class="letter-section">
+    <section id="letterSection">
 
-        <div class="letter-area">
+        <div class="envelope-area">
 
             <div class="letter-title">
                 THERE'S SOMETHING FOR YOU ♡
             </div>
 
-
-            <div
-                class="envelope-wrap"
-                id="envelopeWrap"
-            >
-
+            <div class="envelope-wrap" id="envelopeWrap">
 
                 <!-- الورقة -->
-
                 <div class="paper">
 
-                    <div class="paper-text">
-
+                    <div id="paperText">
                         افتحي الرسالة ♡
-
                     </div>
 
                 </div>
 
-
                 <!-- الظرف -->
-
                 <div class="envelope">
-
-
-                    <div class="envelope-front"></div>
-
 
                     <div class="flap"></div>
 
+                    <div class="envelope-front"></div>
 
-                    <div
-                        class="heart"
-                        id="heart"
-                    >
+                    <div class="heart" id="heart">
                         ♡
                     </div>
 
-
                 </div>
-
 
             </div>
 
         </div>
 
     </section>
-
 
     <!-- الرسالة -->
 
@@ -1002,7 +996,6 @@ body{
 
     </section>
 
-
     <!-- الصور -->
 
     <section class="gallery-section">
@@ -1011,34 +1004,35 @@ body{
             ذكرياتنا ♡
         </div>
 
-
         <div class="gallery">
 
             <div class="photo">
                 <img
-                    src="photo1.jpg"
+                    src="./photo1.jpg"
                     alt="ذكرياتنا"
+                    onerror="this.style.display='none';"
                 >
             </div>
 
             <div class="photo">
                 <img
-                    src="photo2.jpg"
+                    src="./photo2.jpg"
                     alt="ذكرياتنا"
+                    onerror="this.style.display='none';"
                 >
             </div>
 
             <div class="photo">
                 <img
-                    src="photo3.jpg"
+                    src="./photo3.jpg"
                     alt="ذكرياتنا"
+                    onerror="this.style.display='none';"
                 >
             </div>
 
         </div>
 
     </section>
-
 
     <!-- الهدية -->
 
@@ -1048,11 +1042,7 @@ body{
             ولسه في حاجة أخيرة... 🎁
         </div>
 
-
-        <div
-            class="gift"
-            id="gift"
-        >
+        <div class="gift" id="gift">
 
             <div class="bow">
                 🎀
@@ -1068,33 +1058,30 @@ body{
 
         </div>
 
-
         <div class="gift-note">
             اضغطي على الهدية ♡
         </div>
 
     </section>
 
-
 </main>
 
-
-<!-- ==============================
-     JAVASCRIPT
-============================== -->
+<div class="music-note">
+    ♫
+</div>
 
 <script>
 
-/* ==============================
+/* =========================
    كلمة السر
-============================== */
+========================= */
 
 const SECRET = "oursecret";
 
 
-/* ==============================
+/* =========================
    العناصر
-============================== */
+========================= */
 
 const intro =
     document.getElementById("intro");
@@ -1129,124 +1116,130 @@ const heart =
 const loveMessage =
     document.getElementById("loveMessage");
 
-const falling =
-    document.getElementById("falling");
+const stars =
+    document.getElementById("stars");
 
 
-/* ==============================
-   النجوم والقلوب
-============================== */
+/* =========================
+   إنشاء النجوم
+========================= */
 
-function createFalling(){
+for(let i = 0; i < 55; i++){
+
+    const star =
+        document.createElement("div");
+
+    star.className = "star";
 
     const symbols = [
         "✦",
         "✧",
         "⋆",
-        "♡",
-        "♥"
+        "·",
+        "♡"
     ];
 
-    for(
-        let i = 0;
-        i < 45;
-        i++
-    ){
+    star.textContent =
+        symbols[
+            Math.floor(
+                Math.random() *
+                symbols.length
+            )
+        ];
 
-        const item =
-            document.createElement("div");
+    star.style.left =
+        Math.random() * 100 + "vw";
 
-        item.className = "fall";
+    star.style.top =
+        Math.random() * 100 + "vh";
 
-        item.textContent =
-            symbols[
-                Math.floor(
-                    Math.random()
-                    *
-                    symbols.length
-                )
-            ];
+    star.style.fontSize =
+        (7 + Math.random() * 12) + "px";
 
-        item.style.left =
-            Math.random() * 100 + "vw";
+    star.style.animationDelay =
+        Math.random() * 5 + "s";
 
-        item.style.fontSize =
-            (
-                8 +
-                Math.random() * 16
-            ) + "px";
+    star.style.animationDuration =
+        (3 + Math.random() * 5) + "s";
 
-        item.style.animationDuration =
-            (
-                5 +
-                Math.random() * 8
-            ) + "s";
-
-        item.style.animationDelay =
-            Math.random() * 6 + "s";
-
-        item.style.color =
-            Math.random() > .5
-            ? "#b9aaa5"
-            : "#c7a19a";
-
-        falling.appendChild(item);
-
-    }
-
+    stars.appendChild(star);
 }
 
 
-/*
-   مهم:
-   النجوم تبدأ فورًا مع العد.
-*/
+/* =========================
+   القلوب والنجوم الساقطة
+   تبدأ من أول ثانية
+========================= */
 
-createFalling();
+function createPetals(){
+
+    for(let i = 0; i < 22; i++){
+
+        const p =
+            document.createElement("div");
+
+        p.className = "petal";
+
+        p.textContent =
+            Math.random() > .5
+            ? "♡"
+            : "✦";
+
+        p.style.left =
+            Math.random() * 100 + "vw";
+
+        p.style.animationDuration =
+            (6 + Math.random() * 10) + "s";
+
+        p.style.animationDelay =
+            Math.random() * 8 + "s";
+
+        p.style.fontSize =
+            (9 + Math.random() * 14) + "px";
+
+        document.body.appendChild(p);
+    }
+}
 
 
-/* ==============================
+/* شغل القلوب من البداية */
+
+createPetals();
+
+
+/* =========================
    COUNTDOWN
-============================== */
+========================= */
 
-let number = 3;
+let n = 3;
 
-const countdown =
-    setInterval(function(){
+const timer =
+    setInterval(() => {
 
-        number--;
+        n--;
 
-        if(number > 0){
+        if(n > 0){
 
-            count.textContent =
-                number;
+            count.textContent = n;
 
-            count.style.animation =
-                "none";
+            count.style.animation = "none";
 
             void count.offsetWidth;
 
             count.style.animation =
-                "numberIn .9s ease";
+                "pulse .9s ease";
 
-        }
+        }else{
 
-        else{
+            clearInterval(timer);
 
-            clearInterval(
-                countdown
-            );
+            intro.style.opacity = "0";
 
-            intro.style.opacity =
-                "0";
+            setTimeout(() => {
 
-            setTimeout(function(){
+                intro.style.display = "none";
 
-                intro.style.display =
-                    "none";
-
-                lock.style.display =
-                    "flex";
+                lock.style.display = "flex";
 
             },1100);
 
@@ -1255,29 +1248,33 @@ const countdown =
     },1000);
 
 
-/* ==============================
-   MUSIC
-============================== */
+/* =========================
+   فتح الموقع بكلمة السر
+========================= */
 
-function playMusic(){
+function unlock(){
 
-    /*
-       دي أهم نقطة:
-       التشغيل بيحصل مباشرة من ضغطة المستخدم
-       على القلب، وليس من setTimeout.
-    */
+    if(password.value.trim() === SECRET){
 
-    music.volume = 0.75;
+        /*
+           تشغيل الأغنية فور نجاح كلمة السر.
+           لأن الزر تم الضغط عليه من المستخدم،
+           المتصفح يسمح بتشغيل الصوت.
+        */
 
-    music.play()
-        .then(function(){
+        music.currentTime = 0;
+
+        music.volume = 0.8;
+
+        music.play()
+        .then(() => {
 
             console.log(
-                "Music is playing"
+                "Music started successfully"
             );
 
         })
-        .catch(function(error){
+        .catch((error) => {
 
             console.log(
                 "Music could not start:",
@@ -1286,43 +1283,24 @@ function playMusic(){
 
         });
 
-}
 
+        lock.style.opacity = "0";
 
-/* ==============================
-   PASSWORD
-============================== */
+        setTimeout(() => {
 
-function unlock(){
+            lock.style.display = "none";
 
-    if(
-        password.value.trim()
-        ===
-        SECRET
-    ){
-
-        lock.style.opacity =
-            "0";
-
-        setTimeout(function(){
-
-            lock.style.display =
-                "none";
-
-            main.style.opacity =
-                "1";
+            main.style.opacity = "1";
 
         },700);
 
-    }
 
-    else{
+    }else{
 
         error.textContent =
             "كلمة السر مش صحيحة ♡";
 
-        password.value =
-            "";
+        password.value = "";
 
         password.focus();
 
@@ -1331,19 +1309,21 @@ function unlock(){
 }
 
 
+/* زر الدخول */
+
 enter.addEventListener(
     "click",
     unlock
 );
 
 
+/* زر Enter */
+
 password.addEventListener(
     "keydown",
-    function(event){
+    function(e){
 
-        if(
-            event.key === "Enter"
-        ){
+        if(e.key === "Enter"){
 
             unlock();
 
@@ -1353,77 +1333,49 @@ password.addEventListener(
 );
 
 
-/* ==============================
-   فتح الظرف + الأغنية
-============================== */
+/* =========================
+   فتح الظرف
+========================= */
 
 heart.addEventListener(
     "click",
     function(){
 
-        /*
-           تشغيل الأغنية يحصل هنا
-           مباشرة مع ضغطة القلب.
-        */
-
-        playMusic();
-
-
-        /*
-           فتح الظرف
-        */
-
         if(
-            envelopeWrap.classList.contains(
-                "open"
-            )
+            envelopeWrap.classList
+            .contains("open")
         ){
-
             return;
-
         }
 
+        envelopeWrap.classList.add("open");
 
-        envelopeWrap.classList.add(
-            "open"
-        );
+        setTimeout(() => {
 
+            loveMessage.classList.add("show");
 
-        /*
-           إظهار الرسالة بعد حركة الظرف
-        */
-
-        setTimeout(
-            function(){
-
-                loveMessage.classList.add(
-                    "show"
-                );
-
-            },
-            900
-        );
+        },1000);
 
     }
 );
 
 
-/* ==============================
+/* =========================
    الهدية
-============================== */
+========================= */
 
 document
-    .getElementById("gift")
-    .addEventListener(
-        "click",
-        function(){
+.getElementById("gift")
+.addEventListener(
+    "click",
+    function(){
 
-            alert(
-                "أنتِ أجمل هدية أصلًا ❤️"
-            );
+        alert(
+            "أنتِ أجمل هدية أصلًا ❤️"
+        );
 
-        }
-    );
+    }
+);
 
 </script>
 
