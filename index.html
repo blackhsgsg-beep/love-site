@@ -7,6 +7,7 @@
 <title>For You ♡</title>
 
 <style>
+
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Tajawal:wght@300;400&display=swap');
 
 *{
@@ -26,7 +27,7 @@ body{
 }
 
 /* =========================
-   النجوم
+   STARS
 ========================= */
 
 #stars{
@@ -46,6 +47,7 @@ body{
 }
 
 @keyframes twinkle{
+
     0%,100%{
         opacity:0;
         transform:scale(.6);
@@ -55,10 +57,11 @@ body{
         opacity:.75;
         transform:scale(1.2);
     }
+
 }
 
 /* =========================
-   البتلات
+   FALLING PETALS
 ========================= */
 
 .petal{
@@ -72,6 +75,7 @@ body{
 }
 
 @keyframes fall{
+
     0%{
         transform:
             translateY(-50px)
@@ -91,10 +95,11 @@ body{
             rotate(500deg);
         opacity:0;
     }
+
 }
 
 /* =========================
-   انفجار الورد
+   FLOWER BURST
 ========================= */
 
 #flowerBurst{
@@ -139,6 +144,7 @@ body{
             rotate(var(--rotate));
         opacity:0;
     }
+
 }
 
 /* =========================
@@ -149,23 +155,32 @@ body{
     position:fixed;
     inset:0;
     z-index:200;
+
     background:#faf7f5;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     transition:opacity 1.2s ease;
 }
 
 #count{
     font-family:'Cormorant Garamond',serif;
+
     font-size:150px;
+
     font-weight:300;
+
     letter-spacing:10px;
+
     color:#403938;
+
     animation:pulse .9s ease;
 }
 
 @keyframes pulse{
+
     0%{
         opacity:0;
         transform:scale(.65);
@@ -180,6 +195,7 @@ body{
         opacity:1;
         transform:scale(1);
     }
+
 }
 
 /* =========================
@@ -190,13 +206,16 @@ body{
     position:fixed;
     inset:0;
     z-index:190;
+
     background:rgba(250,247,245,.98);
 
     display:none;
+
     align-items:center;
     justify-content:center;
 
     text-align:center;
+
     padding:25px;
 
     transition:opacity 1s ease;
@@ -215,21 +234,33 @@ body{
 
 .lock-box h1{
     font-family:'Cormorant Garamond',serif;
+
     font-size:52px;
+
     font-weight:300;
+
     margin:15px 0 30px;
 }
 
 #password{
     width:100%;
+
     border:0;
+
     border-bottom:1px solid #b9aaa5;
+
     background:transparent;
+
     padding:14px 5px;
+
     text-align:center;
+
     font-family:'Tajawal';
+
     font-size:17px;
+
     outline:none;
+
     color:#403938;
 }
 
@@ -239,13 +270,21 @@ body{
 
 #enter{
     margin-top:28px;
+
     border:1px solid #9e8e89;
+
     background:transparent;
+
     padding:11px 34px;
+
     border-radius:30px;
+
     font-family:'Tajawal';
+
     cursor:pointer;
+
     color:#403938;
+
     transition:.3s;
 }
 
@@ -256,8 +295,11 @@ body{
 
 #error{
     height:20px;
+
     color:#a36f6b;
+
     font-size:12px;
+
     margin-top:12px;
 }
 
@@ -267,89 +309,235 @@ body{
 
 #main{
     min-height:100vh;
+
     opacity:0;
+
     transition:opacity 2s ease;
+
     position:relative;
+
     z-index:2;
+}
+
+/* =========================
+   ENVELOPE SECTION
+========================= */
+
+#letterSection{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:100px 20px 80px;
+
+    position:relative;
+}
+
+.envelope-area{
+    text-align:center;
+
+    width:100%;
+}
+
+.letter-title{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:21px;
+
+    color:#a18d88;
+
+    letter-spacing:3px;
+
+    margin-bottom:55px;
+
+    position:relative;
+
+    z-index:20;
+}
+
+/* =========================
+   ENVELOPE WRAPPER
+========================= */
+
+.envelope-wrap{
+
+    position:relative;
+
+    width:340px;
+
+    height:380px;
+
+    margin:0 auto;
+}
+
+/* =========================
+   PAPER
+========================= */
+
+.paper{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:20px;
+
+    width:275px;
+
+    height:225px;
+
+    padding:22px 25px;
+
+    background:#fffdfb;
+
+    border:1px solid #eee3df;
+
+    box-shadow:
+        0 10px 30px rgba(70,45,40,.12);
+
+    transform:translateX(-50%);
+
+    opacity:0;
+
+    z-index:2;
+
+    overflow:hidden;
+
+    transition:
+        transform 1.2s ease,
+        opacity 1s ease;
+}
+
+.envelope-wrap.open .paper{
+
+    opacity:1;
+
+    transform:
+        translate(-50%,-150px);
+
+    z-index:9;
+}
+
+#paperText{
+
+    width:100%;
+
+    height:180px;
+
+    overflow:hidden;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:20px;
+
+    line-height:1.55;
+
+    text-align:center;
+
+    overflow-wrap:break-word;
+
+    word-break:normal;
 }
 
 /* =========================
    ENVELOPE
 ========================= */
 
-#letterSection{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:70px 20px;
-    position:relative;
-}
-
-.envelope-area{
-    text-align:center;
-    width:100%;
-}
-
-.letter-title{
-    font-family:'Cormorant Garamond',serif;
-    font-size:21px;
-    color:#a18d88;
-    letter-spacing:3px;
-    margin-bottom:45px;
-}
-
-.envelope-wrap{
-    position:relative;
-    width:340px;
-    height:350px;
-    margin:0 auto;
-}
-
 .envelope{
+
     position:absolute;
+
     left:50%;
+
     bottom:20px;
+
     transform:translateX(-50%);
+
     width:340px;
+
     height:210px;
+
     background:#eadbd6;
+
     border-radius:6px;
-    box-shadow:0 18px 45px rgba(70,45,40,.16);
+
+    box-shadow:
+        0 18px 45px rgba(70,45,40,.16);
+
     z-index:3;
 }
 
 .envelope-front{
+
     position:absolute;
+
     inset:0;
+
     background:#eadbd6;
+
     border-radius:6px;
+
     overflow:hidden;
+
     z-index:4;
 }
 
 .envelope-front:before{
+
     content:"";
+
     position:absolute;
+
     left:0;
+
     bottom:0;
+
     width:0;
+
     height:0;
+
     border-style:solid;
-    border-width:105px 170px 0 0;
-    border-color:#dfcdc7 transparent transparent transparent;
+
+    border-width:
+        105px 170px 0 0;
+
+    border-color:
+        #dfcdc7
+        transparent
+        transparent
+        transparent;
 }
 
 .envelope-front:after{
+
     content:"";
+
     position:absolute;
+
     right:0;
+
     bottom:0;
+
     width:0;
+
     height:0;
+
     border-style:solid;
-    border-width:105px 0 0 170px;
-    border-color:#dfcdc7 transparent transparent transparent;
+
+    border-width:
+        105px 0 0 170px;
+
+    border-color:
+        #dfcdc7
+        transparent
+        transparent
+        transparent;
 }
 
 /* =========================
@@ -357,18 +545,31 @@ body{
 ========================= */
 
 .flap{
+
     position:absolute;
+
     left:0;
+
     top:0;
+
     width:100%;
+
     height:120px;
+
     background:#e3d1cb;
 
     clip-path:
-        polygon(0 0,100% 0,50% 100%);
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
 
     transform-origin:top center;
-    transition:transform 1.2s ease;
+
+    transition:
+        transform 1.2s ease;
+
     z-index:7;
 }
 
@@ -377,64 +578,22 @@ body{
 }
 
 /* =========================
-   PAPER
-========================= */
-
-.paper{
-    position:absolute;
-    left:50%;
-    bottom:20px;
-
-    width:275px;
-    min-height:220px;
-
-    padding:28px;
-
-    background:#fffdfb;
-    border:1px solid #eee3df;
-
-    box-shadow:0 10px 30px rgba(70,45,40,.12);
-
-    transform:translateX(-50%);
-
-    opacity:0;
-
-    z-index:2;
-
-    transition:
-        transform 1.2s ease,
-        opacity 1s ease;
-}
-
-.envelope-wrap.open .paper{
-    opacity:1;
-
-    transform:
-        translate(-50%,-185px);
-
-    z-index:9;
-}
-
-#paperText{
-    font-family:'Cormorant Garamond',serif;
-    font-size:22px;
-    line-height:1.8;
-    min-height:160px;
-}
-
-/* =========================
    HEART
 ========================= */
 
 .heart{
+
     position:absolute;
+
     left:50%;
+
     top:50%;
 
     transform:
         translate(-50%,-50%);
 
     width:64px;
+
     height:64px;
 
     border-radius:50%;
@@ -442,7 +601,9 @@ body{
     background:#fff8f6;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     font-size:32px;
@@ -458,13 +619,16 @@ body{
 }
 
 .heart:hover{
+
     transform:
         translate(-50%,-50%)
         scale(1.1);
 }
 
 .envelope-wrap.open .heart{
+
     opacity:0;
+
     pointer-events:none;
 }
 
@@ -473,7 +637,9 @@ body{
 ========================= */
 
 #loveMessage{
+
     max-width:700px;
+
     margin:0 auto;
 
     padding:80px 25px 120px;
@@ -481,40 +647,58 @@ body{
     text-align:center;
 
     opacity:0;
+
     transform:translateY(30px);
 
     transition:1.5s ease;
 }
 
 #loveMessage.show{
+
     opacity:1;
+
     transform:translateY(0);
 }
 
 .message-small{
+
     font-size:11px;
+
     letter-spacing:4px;
+
     color:#a18d88;
 }
 
 .message-title{
+
     font-family:'Cormorant Garamond',serif;
+
     font-size:58px;
+
     font-weight:300;
+
     margin:18px 0 25px;
 }
 
 .message-text{
+
     font-family:'Cormorant Garamond',serif;
+
     font-size:25px;
+
     line-height:1.9;
+
     font-weight:300;
 }
 
 .signature{
+
     margin-top:35px;
+
     font-family:'Cormorant Garamond',serif;
+
     font-size:22px;
+
     font-style:italic;
 }
 
@@ -523,27 +707,38 @@ body{
 ========================= */
 
 .gallery-section{
+
     padding:100px 20px 140px;
+
     text-align:center;
 }
 
 .gallery-title{
+
     font-family:'Cormorant Garamond',serif;
+
     font-size:54px;
+
     font-weight:300;
+
     margin-bottom:70px;
 }
 
 .gallery{
+
     width:min(760px,94%);
+
     margin:auto;
 
     display:flex;
+
     flex-direction:column;
+
     gap:80px;
 }
 
 .photo{
+
     position:relative;
 
     padding:18px;
@@ -569,6 +764,7 @@ body{
 }
 
 .photo:hover{
+
     transform:
         rotate(0deg)
         translateY(-8px);
@@ -578,11 +774,13 @@ body{
 }
 
 .photo:before{
+
     content:"🌿  🌹";
 
     position:absolute;
 
     top:-30px;
+
     left:-25px;
 
     font-size:30px;
@@ -593,11 +791,13 @@ body{
 }
 
 .photo:after{
+
     content:"🌹  🌿";
 
     position:absolute;
 
     bottom:-27px;
+
     right:-22px;
 
     font-size:30px;
@@ -608,6 +808,7 @@ body{
 }
 
 .photo img{
+
     width:100%;
 
     aspect-ratio:4/5;
@@ -626,31 +827,42 @@ body{
 }
 
 /* =========================
-   SCRATCH MESSAGE
+   SCRATCH
 ========================= */
 
 .scratch-section{
+
     padding:100px 20px 140px;
+
     text-align:center;
 }
 
 .scratch-title{
+
     font-family:'Cormorant Garamond',serif;
+
     font-size:50px;
+
     font-weight:300;
+
     margin-bottom:15px;
 }
 
 .scratch-subtitle{
+
     color:#a18d88;
+
     font-size:13px;
+
     margin-bottom:45px;
 }
 
 .scratch-card{
+
     position:relative;
 
     width:min(700px,92%);
+
     min-height:330px;
 
     margin:auto;
@@ -666,6 +878,7 @@ body{
 }
 
 .hidden-message{
+
     padding:55px 35px;
 
     font-family:'Cormorant Garamond',serif;
@@ -678,15 +891,20 @@ body{
 }
 
 .hidden-message .tiny{
+
     font-size:18px;
+
     color:#a18d88;
 }
 
 #scratchCanvas{
+
     position:absolute;
+
     inset:0;
 
     width:100%;
+
     height:100%;
 
     cursor:crosshair;
@@ -695,9 +913,13 @@ body{
 }
 
 .scratch-hint{
+
     margin-top:22px;
+
     color:#9e8e89;
+
     font-size:12px;
+
     letter-spacing:1px;
 }
 
@@ -706,11 +928,15 @@ body{
 ========================= */
 
 .gift-section{
+
     min-height:75vh;
 
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
+
     justify-content:center;
 
     text-align:center;
@@ -719,16 +945,22 @@ body{
 }
 
 .gift-title{
+
     font-family:'Cormorant Garamond',serif;
+
     font-size:48px;
+
     font-weight:300;
+
     margin-bottom:40px;
 }
 
 .gift{
+
     position:relative;
 
     width:170px;
+
     height:145px;
 
     cursor:pointer;
@@ -741,10 +973,13 @@ body{
 }
 
 .gift-box{
+
     position:absolute;
+
     bottom:0;
 
     width:170px;
+
     height:105px;
 
     background:#e6c9c2;
@@ -756,11 +991,15 @@ body{
 }
 
 .gift-lid{
+
     position:absolute;
+
     top:20px;
+
     left:-8px;
 
     width:186px;
+
     height:35px;
 
     background:#d8b4ac;
@@ -771,12 +1010,15 @@ body{
 }
 
 .ribbon-v{
+
     position:absolute;
 
     left:72px;
+
     top:20px;
 
     width:25px;
+
     height:125px;
 
     background:#f5e5df;
@@ -785,11 +1027,13 @@ body{
 }
 
 .ribbon-h{
+
     position:absolute;
 
     top:67px;
 
     width:170px;
+
     height:20px;
 
     background:#f5e5df;
@@ -798,9 +1042,11 @@ body{
 }
 
 .bow{
+
     position:absolute;
 
     top:0;
+
     left:50%;
 
     transform:translateX(-50%);
@@ -811,6 +1057,7 @@ body{
 }
 
 .gift-note{
+
     margin-top:35px;
 
     color:#a18d88;
@@ -825,14 +1072,17 @@ body{
 ========================= */
 
 .music-note{
+
     position:fixed;
 
     right:18px;
+
     bottom:18px;
 
     border:1px solid #b9aaa5;
 
     width:40px;
+
     height:40px;
 
     border-radius:50%;
@@ -840,6 +1090,7 @@ body{
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
     font-size:16px;
@@ -865,9 +1116,18 @@ body{
         font-size:44px;
     }
 
+    #letterSection{
+        padding-top:80px;
+    }
+
+    .letter-title{
+        font-size:18px;
+        margin-bottom:45px;
+    }
+
     .envelope-wrap{
         width:300px;
-        height:340px;
+        height:360px;
     }
 
     .envelope{
@@ -876,16 +1136,37 @@ body{
     }
 
     .envelope-front:before{
-        border-width:95px 150px 0 0;
+        border-width:
+            95px 150px 0 0;
     }
 
     .envelope-front:after{
-        border-width:95px 0 0 150px;
+        border-width:
+            95px 0 0 150px;
     }
 
     .paper{
+
         width:255px;
-        min-height:205px;
+
+        height:205px;
+
+        padding:18px 20px;
+    }
+
+    .envelope-wrap.open .paper{
+
+        transform:
+            translate(-50%,-140px);
+    }
+
+    #paperText{
+
+        height:165px;
+
+        font-size:18px;
+
+        line-height:1.5;
     }
 
     .message-title{
@@ -913,18 +1194,26 @@ body{
         font-size:23px;
         padding:45px 22px;
     }
+
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- النجوم -->
 <div id="stars"></div>
 
-<!-- عد تنازلي -->
+<!-- العد التنازلي -->
 <div id="intro">
-    <div id="count">3</div>
+
+    <div id="count">
+        3
+    </div>
+
 </div>
+
 
 <!-- كلمة السر -->
 <div id="lock">
@@ -956,15 +1245,25 @@ body{
 
 </div>
 
+
 <!-- انفجار الورد -->
 <div id="flowerBurst"></div>
 
+
 <!-- الأغنية -->
 <audio id="music" preload="auto">
-    <source src="./music.mp3" type="audio/mpeg">
+
+    <source
+        src="./music.mp3"
+        type="audio/mpeg"
+    >
+
 </audio>
 
+
+<!-- الموقع -->
 <main id="main">
+
 
     <!-- =========================
          الظرف
@@ -975,17 +1274,28 @@ body{
         <div class="envelope-area">
 
             <div class="letter-title">
+
                 THERE'S SOMETHING FOR YOU ♡
+
             </div>
 
-            <div class="envelope-wrap" id="envelopeWrap">
+
+            <div
+                class="envelope-wrap"
+                id="envelopeWrap"
+            >
+
+
+                <!-- الورقة -->
 
                 <div class="paper">
 
-                    <!-- فاضية في البداية -->
                     <div id="paperText"></div>
 
                 </div>
+
+
+                <!-- الظرف -->
 
                 <div class="envelope">
 
@@ -993,7 +1303,10 @@ body{
 
                     <div class="envelope-front"></div>
 
-                    <div class="heart" id="heart">
+                    <div
+                        class="heart"
+                        id="heart"
+                    >
                         ♡
                     </div>
 
@@ -1065,27 +1378,35 @@ body{
         <div class="gallery">
 
             <div class="photo">
+
                 <img
                     src="./photo1.jpg"
                     alt="ذكرياتنا"
                     onerror="this.style.display='none';"
                 >
+
             </div>
 
+
             <div class="photo">
+
                 <img
                     src="./photo2.jpg"
                     alt="ذكرياتنا"
                     onerror="this.style.display='none';"
                 >
+
             </div>
 
+
             <div class="photo">
+
                 <img
                     src="./photo3.jpg"
                     alt="ذكرياتنا"
                     onerror="this.style.display='none';"
                 >
+
             </div>
 
         </div>
@@ -1106,6 +1427,7 @@ body{
         <div class="scratch-subtitle">
             مش هقولك هي إيه... اكتشفيها بنفسك
         </div>
+
 
         <div class="scratch-card">
 
@@ -1133,9 +1455,11 @@ body{
 
             </div>
 
+
             <canvas id="scratchCanvas"></canvas>
 
         </div>
+
 
         <div class="scratch-hint">
             ✦ حرّكي صباعك على الشاشة عشان تكشفي الرسالة ✦
@@ -1154,7 +1478,11 @@ body{
             ولسه في حاجة أخيرة... 🎁
         </div>
 
-        <div class="gift" id="gift">
+
+        <div
+            class="gift"
+            id="gift"
+        >
 
             <div class="bow">
                 🎀
@@ -1170,13 +1498,16 @@ body{
 
         </div>
 
+
         <div class="gift-note">
             اضغطي على الهدية ♡
         </div>
 
     </section>
 
+
 </main>
+
 
 <div class="music-note">
     ♫
@@ -1186,14 +1517,14 @@ body{
 <script>
 
 /* =========================
-   كلمة السر
+   PASSWORD
 ========================= */
 
 const SECRET = "oursecret";
 
 
 /* =========================
-   العناصر
+   ELEMENTS
 ========================= */
 
 const intro =
@@ -1240,7 +1571,7 @@ const paperText =
 
 
 /* =========================
-   النجوم
+   STARS
 ========================= */
 
 for(let i = 0; i < 55; i++){
@@ -1261,7 +1592,8 @@ for(let i = 0; i < 55; i++){
     star.textContent =
         symbols[
             Math.floor(
-                Math.random() * symbols.length
+                Math.random() *
+                symbols.length
             )
         ];
 
@@ -1285,7 +1617,7 @@ for(let i = 0; i < 55; i++){
 
 
 /* =========================
-   البتلات المستمرة
+   FALLING PETALS
 ========================= */
 
 function createPetal(){
@@ -1317,18 +1649,21 @@ function createPetal(){
     document.body.appendChild(p);
 
     setTimeout(() => {
+
         p.remove();
+
     },16000);
 }
 
 
 /* =========================
-   انفجار الورد
+   FLOWER EXPLOSION
 ========================= */
 
 function flowerExplosion(){
 
-    flowerBurst.style.display = "block";
+    flowerBurst.style.display =
+        "block";
 
     const flowers = [
         "🌹",
@@ -1396,13 +1731,17 @@ function flowerExplosion(){
         flower.style.animationDelay =
             Math.random() * .4 + "s";
 
-        flowerBurst.appendChild(flower);
+        flowerBurst.appendChild(
+            flower
+        );
     }
 
     setTimeout(() => {
 
         flowerBurst.innerHTML = "";
-        flowerBurst.style.display = "none";
+
+        flowerBurst.style.display =
+            "none";
 
     },3300);
 }
@@ -1423,7 +1762,8 @@ const timer =
 
             count.textContent = n;
 
-            count.style.animation = "none";
+            count.style.animation =
+                "none";
 
             void count.offsetWidth;
 
@@ -1434,13 +1774,16 @@ const timer =
 
             clearInterval(timer);
 
-            intro.style.opacity = "0";
+            intro.style.opacity =
+                "0";
 
             setTimeout(() => {
 
-                intro.style.display = "none";
+                intro.style.display =
+                    "none";
 
-                lock.style.display = "flex";
+                lock.style.display =
+                    "flex";
 
             },1100);
 
@@ -1450,68 +1793,75 @@ const timer =
 
 
 /* =========================
-   فتح الموقع
+   UNLOCK
 ========================= */
 
 function unlock(){
 
-    if(password.value.trim() === SECRET){
-
-        /*
-           الأغنية تبدأ مرة واحدة فقط
-        */
+    if(
+        password.value.trim()
+        === SECRET
+    ){
 
         music.currentTime = 0;
+
         music.loop = false;
-        music.volume = 0.8;
+
+        music.volume = .8;
 
         music.play()
         .catch(() => {});
 
 
-        /*
-           انفجار الورد
-        */
+        /* ورد */
 
         flowerExplosion();
 
 
-        /*
-           بعدها البتلات تبدأ
-        */
+        /* بتلات أولية */
 
         for(let i = 0; i < 18; i++){
 
             setTimeout(() => {
+
                 createPetal();
-            }, i * 250);
+
+            },i * 250);
 
         }
 
-        /*
-           استمرار سقوط البتلات
-        */
+
+        /* بتلات مستمرة */
 
         const petalInterval =
-            setInterval(createPetal,850);
+            setInterval(
+                createPetal,
+                850
+            );
+
 
         setTimeout(() => {
 
-            clearInterval(petalInterval);
+            clearInterval(
+                petalInterval
+            );
 
         },18000);
 
 
-        lock.style.opacity = "0";
+        lock.style.opacity =
+            "0";
+
 
         setTimeout(() => {
 
-            lock.style.display = "none";
+            lock.style.display =
+                "none";
 
-            main.style.opacity = "1";
+            main.style.opacity =
+                "1";
 
         },700);
-
 
     }else{
 
@@ -1523,6 +1873,7 @@ function unlock(){
         password.focus();
 
     }
+
 }
 
 
@@ -1537,7 +1888,9 @@ password.addEventListener(
     function(e){
 
         if(e.key === "Enter"){
+
             unlock();
+
         }
 
     }
@@ -1545,7 +1898,7 @@ password.addEventListener(
 
 
 /* =========================
-   رسالة الظرف
+   LETTER
 ========================= */
 
 const letterText =
@@ -1557,13 +1910,13 @@ const letterText =
 عشان كل ما تقريه تفتكري
 إن في حد بيقدّر وجودك جدًا.
 
-خليكي دايمًا بخير...
-وبجانب كل حاجة حلوة
-تستاهليها. ♡`;
+خليكي دايمًا بخير،
+ومتنسيش إن في حد
+بيتمنى يشوفك مبسوطة دايمًا. ♡`;
 
 
 /* =========================
-   الكتابة حرف حرف
+   TYPEWRITER
 ========================= */
 
 function typeLetter(){
@@ -1572,6 +1925,7 @@ function typeLetter(){
 
     let index = 0;
 
+
     function write(){
 
         if(index < letterText.length){
@@ -1579,9 +1933,11 @@ function typeLetter(){
             const char =
                 letterText[index];
 
+
             if(char === "\n"){
 
-                paperText.innerHTML += "<br>";
+                paperText.innerHTML +=
+                    "<br>";
 
             }else{
 
@@ -1589,25 +1945,45 @@ function typeLetter(){
                     char === " "
                     ? "&nbsp;"
                     : char;
+
             }
 
+
             index++;
+
 
             setTimeout(
                 write,
                 45
             );
 
+        }else{
+
+            /*
+               الكتابة خلصت بالكامل
+               وبعدها تظهر الرسالة
+            */
+
+            setTimeout(() => {
+
+                loveMessage.classList.add(
+                    "show"
+                );
+
+            },500);
+
         }
 
     }
 
+
     write();
+
 }
 
 
 /* =========================
-   فتح الظرف
+   OPEN ENVELOPE
 ========================= */
 
 heart.addEventListener(
@@ -1618,14 +1994,19 @@ heart.addEventListener(
             envelopeWrap.classList
             .contains("open")
         ){
+
             return;
+
         }
 
-        envelopeWrap.classList.add("open");
+
+        envelopeWrap.classList.add(
+            "open"
+        );
+
 
         /*
-           نستنى الورقة تطلع
-           وبعدها تبدأ الكتابة
+           الورقة تطلع أولًا
         */
 
         setTimeout(() => {
@@ -1633,16 +2014,6 @@ heart.addEventListener(
             typeLetter();
 
         },1200);
-
-        /*
-           الرسالة الرئيسية تظهر بعد الكتابة
-        */
-
-        setTimeout(() => {
-
-            loveMessage.classList.add("show");
-
-        },7000);
 
     }
 );
@@ -1653,13 +2024,17 @@ heart.addEventListener(
 ========================= */
 
 const canvas =
-    document.getElementById("scratchCanvas");
+    document.getElementById(
+        "scratchCanvas"
+    );
 
 const ctx =
     canvas.getContext("2d");
 
 const scratchCard =
-    document.querySelector(".scratch-card");
+    document.querySelector(
+        ".scratch-card"
+    );
 
 
 function setupScratch(){
@@ -1670,17 +2045,20 @@ function setupScratch(){
     const dpr =
         window.devicePixelRatio || 1;
 
+
     canvas.width =
         rect.width * dpr;
 
     canvas.height =
         rect.height * dpr;
 
+
     canvas.style.width =
         rect.width + "px";
 
     canvas.style.height =
         rect.height + "px";
+
 
     ctx.setTransform(
         dpr,
@@ -1691,9 +2069,6 @@ function setupScratch(){
         0
     );
 
-    /*
-       طبقة التغطية
-    */
 
     const gradient =
         ctx.createLinearGradient(
@@ -1702,6 +2077,7 @@ function setupScratch(){
             rect.width,
             rect.height
         );
+
 
     gradient.addColorStop(
         0,
@@ -1718,8 +2094,10 @@ function setupScratch(){
         "#d3c7c2"
     );
 
+
     ctx.fillStyle =
         gradient;
+
 
     ctx.fillRect(
         0,
@@ -1728,18 +2106,18 @@ function setupScratch(){
         rect.height
     );
 
-    /*
-       كلمة صغيرة فوق طبقة الخدش
-    */
 
     ctx.fillStyle =
         "rgba(255,255,255,.8)";
 
+
     ctx.font =
         "16px Tajawal";
 
+
     ctx.textAlign =
         "center";
+
 
     ctx.fillText(
         "♡  اخدشي هنا  ♡",
@@ -1747,11 +2125,9 @@ function setupScratch(){
         rect.height / 2
     );
 
-    /*
-       شكل خفيف كأنه بطاقة
-    */
 
     ctx.globalAlpha = .15;
+
 
     for(let i = 0; i < 25; i++){
 
@@ -1765,11 +2141,13 @@ function setupScratch(){
             Math.PI * 2
         );
 
-        ctx.fillStyle = "#ffffff";
+        ctx.fillStyle =
+            "#ffffff";
 
         ctx.fill();
 
     }
+
 
     ctx.globalAlpha = 1;
 
@@ -1777,7 +2155,7 @@ function setupScratch(){
 
 
 /* =========================
-   الخدش
+   SCRATCH
 ========================= */
 
 let scratching = false;
@@ -1790,6 +2168,7 @@ function getPosition(e){
 
     let x;
     let y;
+
 
     if(e.touches){
 
@@ -1813,25 +2192,37 @@ function getPosition(e){
 
     }
 
-    return {x,y};
+
+    return {
+        x:x,
+        y:y
+    };
+
 }
 
 
 function scratch(e){
 
     if(!scratching){
+
         return;
+
     }
 
+
     e.preventDefault();
+
 
     const pos =
         getPosition(e);
 
+
     ctx.globalCompositeOperation =
         "destination-out";
 
+
     ctx.beginPath();
+
 
     ctx.arc(
         pos.x,
@@ -1841,34 +2232,41 @@ function scratch(e){
         Math.PI * 2
     );
 
+
     ctx.fill();
 
 }
 
 
-/* الماوس */
+/* MOUSE */
 
 canvas.addEventListener(
     "mousedown",
     function(){
+
         scratching = true;
+
     }
 );
+
 
 canvas.addEventListener(
     "mousemove",
     scratch
 );
 
+
 window.addEventListener(
     "mouseup",
     function(){
+
         scratching = false;
+
     }
 );
 
 
-/* الموبايل */
+/* TOUCH */
 
 canvas.addEventListener(
     "touchstart",
@@ -1879,14 +2277,20 @@ canvas.addEventListener(
         scratch(e);
 
     },
-    {passive:false}
+    {
+        passive:false
+    }
 );
+
 
 canvas.addEventListener(
     "touchmove",
     scratch,
-    {passive:false}
+    {
+        passive:false
+    }
 );
+
 
 canvas.addEventListener(
     "touchend",
@@ -1899,13 +2303,14 @@ canvas.addEventListener(
 
 
 /* =========================
-   تجهيز بطاقة الخدش
+   SCRATCH SETUP
 ========================= */
 
 window.addEventListener(
     "load",
     setupScratch
 );
+
 
 window.addEventListener(
     "resize",
@@ -1914,7 +2319,7 @@ window.addEventListener(
 
 
 /* =========================
-   الهدية
+   GIFT
 ========================= */
 
 document
