@@ -47,7 +47,6 @@ body{
 }
 
 @keyframes twinkle{
-
     0%,100%{
         opacity:0;
         transform:scale(.6);
@@ -57,7 +56,6 @@ body{
         opacity:.75;
         transform:scale(1.2);
     }
-
 }
 
 /* =========================
@@ -95,7 +93,6 @@ body{
             rotate(500deg);
         opacity:0;
     }
-
 }
 
 /* =========================
@@ -144,7 +141,6 @@ body{
             rotate(var(--rotate));
         opacity:0;
     }
-
 }
 
 /* =========================
@@ -155,7 +151,6 @@ body{
     position:fixed;
     inset:0;
     z-index:200;
-
     background:#faf7f5;
 
     display:flex;
@@ -167,13 +162,9 @@ body{
 
 #count{
     font-family:'Cormorant Garamond',serif;
-
     font-size:150px;
-
     font-weight:300;
-
     letter-spacing:10px;
-
     color:#403938;
 
     animation:pulse .9s ease;
@@ -195,7 +186,6 @@ body{
         opacity:1;
         transform:scale(1);
     }
-
 }
 
 /* =========================
@@ -215,7 +205,6 @@ body{
     justify-content:center;
 
     text-align:center;
-
     padding:25px;
 
     transition:opacity 1s ease;
@@ -234,11 +223,8 @@ body{
 
 .lock-box h1{
     font-family:'Cormorant Garamond',serif;
-
     font-size:52px;
-
     font-weight:300;
-
     margin:15px 0 30px;
 }
 
@@ -246,7 +232,6 @@ body{
     width:100%;
 
     border:0;
-
     border-bottom:1px solid #b9aaa5;
 
     background:transparent;
@@ -256,7 +241,6 @@ body{
     text-align:center;
 
     font-family:'Tajawal';
-
     font-size:17px;
 
     outline:none;
@@ -295,11 +279,8 @@ body{
 
 #error{
     height:20px;
-
     color:#a36f6b;
-
     font-size:12px;
-
     margin-top:12px;
 }
 
@@ -315,7 +296,6 @@ body{
     transition:opacity 2s ease;
 
     position:relative;
-
     z-index:2;
 }
 
@@ -325,22 +305,19 @@ body{
 
 #letterSection{
 
-    min-height:100vh;
+    min-height:auto;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
-    padding:100px 20px 80px;
+    padding:95px 20px 35px;
 
     position:relative;
 }
 
 .envelope-area{
     text-align:center;
-
     width:100%;
 }
 
@@ -354,10 +331,9 @@ body{
 
     letter-spacing:3px;
 
-    margin-bottom:55px;
+    margin-bottom:48px;
 
     position:relative;
-
     z-index:20;
 }
 
@@ -370,7 +346,6 @@ body{
     position:relative;
 
     width:340px;
-
     height:380px;
 
     margin:0 auto;
@@ -385,11 +360,9 @@ body{
     position:absolute;
 
     left:50%;
-
     bottom:20px;
 
     width:275px;
-
     height:225px;
 
     padding:22px 25px;
@@ -441,8 +414,6 @@ body{
     text-align:center;
 
     overflow-wrap:break-word;
-
-    word-break:normal;
 }
 
 /* =========================
@@ -454,13 +425,11 @@ body{
     position:absolute;
 
     left:50%;
-
     bottom:20px;
 
     transform:translateX(-50%);
 
     width:340px;
-
     height:210px;
 
     background:#eadbd6;
@@ -476,7 +445,6 @@ body{
 .envelope-front{
 
     position:absolute;
-
     inset:0;
 
     background:#eadbd6;
@@ -495,11 +463,9 @@ body{
     position:absolute;
 
     left:0;
-
     bottom:0;
 
     width:0;
-
     height:0;
 
     border-style:solid;
@@ -521,11 +487,9 @@ body{
     position:absolute;
 
     right:0;
-
     bottom:0;
 
     width:0;
-
     height:0;
 
     border-style:solid;
@@ -549,11 +513,9 @@ body{
     position:absolute;
 
     left:0;
-
     top:0;
 
     width:100%;
-
     height:120px;
 
     background:#e3d1cb;
@@ -586,14 +548,12 @@ body{
     position:absolute;
 
     left:50%;
-
     top:50%;
 
     transform:
         translate(-50%,-50%);
 
     width:64px;
-
     height:64px;
 
     border-radius:50%;
@@ -603,7 +563,6 @@ body{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     font-size:32px;
@@ -633,6 +592,39 @@ body{
 }
 
 /* =========================
+   OPEN HINT
+========================= */
+
+.open-hint{
+
+    margin-top:0;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:20px;
+
+    color:#a18d88;
+
+    letter-spacing:2px;
+
+    animation:
+        hintFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes hintFloat{
+
+    0%,100%{
+        transform:translateY(0);
+        opacity:.65;
+    }
+
+    50%{
+        transform:translateY(-5px);
+        opacity:1;
+    }
+}
+
+/* =========================
    LOVE MESSAGE
 ========================= */
 
@@ -642,22 +634,13 @@ body{
 
     margin:0 auto;
 
-    padding:80px 25px 120px;
+    padding:55px 25px 100px;
 
     text-align:center;
 
-    opacity:0;
-
-    transform:translateY(30px);
-
-    transition:1.5s ease;
-}
-
-#loveMessage.show{
-
     opacity:1;
 
-    transform:translateY(0);
+    transform:none;
 }
 
 .message-small{
@@ -780,7 +763,6 @@ body{
     position:absolute;
 
     top:-30px;
-
     left:-25px;
 
     font-size:30px;
@@ -797,7 +779,6 @@ body{
     position:absolute;
 
     bottom:-27px;
-
     right:-22px;
 
     font-size:30px;
@@ -904,12 +885,17 @@ body{
     inset:0;
 
     width:100%;
-
     height:100%;
 
     cursor:crosshair;
 
-    touch-action:none;
+    /*
+       مهم للموبايل:
+       يسمح بالـscroll الرأسي
+       ويخلينا نتحكم في الخدش بالـJS
+    */
+
+    touch-action:pan-y;
 }
 
 .scratch-hint{
@@ -936,7 +922,6 @@ body{
     flex-direction:column;
 
     align-items:center;
-
     justify-content:center;
 
     text-align:center;
@@ -960,7 +945,6 @@ body{
     position:relative;
 
     width:170px;
-
     height:145px;
 
     cursor:pointer;
@@ -979,7 +963,6 @@ body{
     bottom:0;
 
     width:170px;
-
     height:105px;
 
     background:#e6c9c2;
@@ -995,11 +978,9 @@ body{
     position:absolute;
 
     top:20px;
-
     left:-8px;
 
     width:186px;
-
     height:35px;
 
     background:#d8b4ac;
@@ -1014,11 +995,9 @@ body{
     position:absolute;
 
     left:72px;
-
     top:20px;
 
     width:25px;
-
     height:125px;
 
     background:#f5e5df;
@@ -1033,7 +1012,6 @@ body{
     top:67px;
 
     width:170px;
-
     height:20px;
 
     background:#f5e5df;
@@ -1046,7 +1024,6 @@ body{
     position:absolute;
 
     top:0;
-
     left:50%;
 
     transform:translateX(-50%);
@@ -1076,13 +1053,11 @@ body{
     position:fixed;
 
     right:18px;
-
     bottom:18px;
 
     border:1px solid #b9aaa5;
 
     width:40px;
-
     height:40px;
 
     border-radius:50%;
@@ -1090,7 +1065,6 @@ body{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     font-size:16px;
@@ -1117,17 +1091,18 @@ body{
     }
 
     #letterSection{
-        padding-top:80px;
+        padding-top:75px;
+        padding-bottom:25px;
     }
 
     .letter-title{
         font-size:18px;
-        margin-bottom:45px;
+        margin-bottom:42px;
     }
 
     .envelope-wrap{
         width:300px;
-        height:360px;
+        height:355px;
     }
 
     .envelope{
@@ -1169,6 +1144,16 @@ body{
         line-height:1.5;
     }
 
+    .open-hint{
+        font-size:19px;
+        margin-top:0;
+    }
+
+    #loveMessage{
+        padding:
+            45px 22px 90px;
+    }
+
     .message-title{
         font-size:47px;
     }
@@ -1194,7 +1179,6 @@ body{
         font-size:23px;
         padding:45px 22px;
     }
-
 }
 
 </style>
@@ -1202,10 +1186,11 @@ body{
 
 <body>
 
-<!-- النجوم -->
+<!-- STARS -->
 <div id="stars"></div>
 
-<!-- العد التنازلي -->
+
+<!-- COUNTDOWN -->
 <div id="intro">
 
     <div id="count">
@@ -1215,7 +1200,7 @@ body{
 </div>
 
 
-<!-- كلمة السر -->
+<!-- PASSWORD -->
 <div id="lock">
 
     <div class="lock-box">
@@ -1246,11 +1231,11 @@ body{
 </div>
 
 
-<!-- انفجار الورد -->
+<!-- FLOWER BURST -->
 <div id="flowerBurst"></div>
 
 
-<!-- الأغنية -->
+<!-- MUSIC -->
 <audio id="music" preload="auto">
 
     <source
@@ -1261,12 +1246,12 @@ body{
 </audio>
 
 
-<!-- الموقع -->
+<!-- MAIN -->
 <main id="main">
 
 
     <!-- =========================
-         الظرف
+         ENVELOPE
     ========================= -->
 
     <section id="letterSection">
@@ -1274,9 +1259,7 @@ body{
         <div class="envelope-area">
 
             <div class="letter-title">
-
                 THERE'S SOMETHING FOR YOU ♡
-
             </div>
 
 
@@ -1285,8 +1268,7 @@ body{
                 id="envelopeWrap"
             >
 
-
-                <!-- الورقة -->
+                <!-- PAPER -->
 
                 <div class="paper">
 
@@ -1295,7 +1277,7 @@ body{
                 </div>
 
 
-                <!-- الظرف -->
+                <!-- ENVELOPE -->
 
                 <div class="envelope">
 
@@ -1314,13 +1296,20 @@ body{
 
             </div>
 
+
+            <!-- OPEN HINT -->
+
+            <div class="open-hint">
+                افتحي الظرف ♡
+            </div>
+
         </div>
 
     </section>
 
 
     <!-- =========================
-         الرسالة الرئيسية
+         LOVE MESSAGE
     ========================= -->
 
     <section id="loveMessage">
@@ -1366,7 +1355,7 @@ body{
 
 
     <!-- =========================
-         الصور
+         GALLERY
     ========================= -->
 
     <section class="gallery-section">
@@ -1415,7 +1404,7 @@ body{
 
 
     <!-- =========================
-         الرسالة المخفية
+         SCRATCH MESSAGE
     ========================= -->
 
     <section class="scratch-section">
@@ -1469,7 +1458,7 @@ body{
 
 
     <!-- =========================
-         الهدية
+         GIFT
     ========================= -->
 
     <section class="gift-section">
@@ -1504,7 +1493,6 @@ body{
         </div>
 
     </section>
-
 
 </main>
 
@@ -1556,9 +1544,6 @@ const envelopeWrap =
 
 const heart =
     document.getElementById("heart");
-
-const loveMessage =
-    document.getElementById("loveMessage");
 
 const stars =
     document.getElementById("stars");
@@ -1649,9 +1634,7 @@ function createPetal(){
     document.body.appendChild(p);
 
     setTimeout(() => {
-
         p.remove();
-
     },16000);
 }
 
@@ -1662,8 +1645,7 @@ function createPetal(){
 
 function flowerExplosion(){
 
-    flowerBurst.style.display =
-        "block";
+    flowerBurst.style.display = "block";
 
     const flowers = [
         "🌹",
@@ -1731,17 +1713,14 @@ function flowerExplosion(){
         flower.style.animationDelay =
             Math.random() * .4 + "s";
 
-        flowerBurst.appendChild(
-            flower
-        );
+        flowerBurst.appendChild(flower);
     }
 
     setTimeout(() => {
 
         flowerBurst.innerHTML = "";
 
-        flowerBurst.style.display =
-            "none";
+        flowerBurst.style.display = "none";
 
     },3300);
 }
@@ -1762,8 +1741,7 @@ const timer =
 
             count.textContent = n;
 
-            count.style.animation =
-                "none";
+            count.style.animation = "none";
 
             void count.offsetWidth;
 
@@ -1774,16 +1752,13 @@ const timer =
 
             clearInterval(timer);
 
-            intro.style.opacity =
-                "0";
+            intro.style.opacity = "0";
 
             setTimeout(() => {
 
-                intro.style.display =
-                    "none";
+                intro.style.display = "none";
 
-                lock.style.display =
-                    "flex";
+                lock.style.display = "flex";
 
             },1100);
 
@@ -1798,22 +1773,18 @@ const timer =
 
 function unlock(){
 
-    if(
-        password.value.trim()
-        === SECRET
-    ){
+    if(password.value.trim() === SECRET){
+
+        /* الموسيقى تبدأ فور الضغط */
 
         music.currentTime = 0;
-
         music.loop = false;
-
         music.volume = .8;
 
-        music.play()
-        .catch(() => {});
+        music.play().catch(() => {});
 
 
-        /* ورد */
+        /* الورد */
 
         flowerExplosion();
 
@@ -1823,9 +1794,7 @@ function unlock(){
         for(let i = 0; i < 18; i++){
 
             setTimeout(() => {
-
                 createPetal();
-
             },i * 250);
 
         }
@@ -1849,17 +1818,14 @@ function unlock(){
         },18000);
 
 
-        lock.style.opacity =
-            "0";
+        lock.style.opacity = "0";
 
 
         setTimeout(() => {
 
-            lock.style.display =
-                "none";
+            lock.style.display = "none";
 
-            main.style.opacity =
-                "1";
+            main.style.opacity = "1";
 
         },700);
 
@@ -1873,7 +1839,6 @@ function unlock(){
         password.focus();
 
     }
-
 }
 
 
@@ -1888,9 +1853,7 @@ password.addEventListener(
     function(e){
 
         if(e.key === "Enter"){
-
             unlock();
-
         }
 
     }
@@ -1925,7 +1888,6 @@ function typeLetter(){
 
     let index = 0;
 
-
     function write(){
 
         if(index < letterText.length){
@@ -1933,11 +1895,9 @@ function typeLetter(){
             const char =
                 letterText[index];
 
-
             if(char === "\n"){
 
-                paperText.innerHTML +=
-                    "<br>";
+                paperText.innerHTML += "<br>";
 
             }else{
 
@@ -1945,40 +1905,20 @@ function typeLetter(){
                     char === " "
                     ? "&nbsp;"
                     : char;
-
             }
 
-
             index++;
-
 
             setTimeout(
                 write,
                 45
             );
 
-        }else{
-
-            /*
-               الكتابة خلصت بالكامل
-               وبعدها تظهر الرسالة
-            */
-
-            setTimeout(() => {
-
-                loveMessage.classList.add(
-                    "show"
-                );
-
-            },500);
-
         }
 
     }
 
-
     write();
-
 }
 
 
@@ -1991,23 +1931,15 @@ heart.addEventListener(
     function(){
 
         if(
-            envelopeWrap.classList
-            .contains("open")
+            envelopeWrap.classList.contains("open")
         ){
-
             return;
-
         }
 
-
-        envelopeWrap.classList.add(
-            "open"
-        );
+        envelopeWrap.classList.add("open");
 
 
-        /*
-           الورقة تطلع أولًا
-        */
+        /* الورقة تطلع ثم تبدأ الكتابة */
 
         setTimeout(() => {
 
@@ -2024,17 +1956,13 @@ heart.addEventListener(
 ========================= */
 
 const canvas =
-    document.getElementById(
-        "scratchCanvas"
-    );
+    document.getElementById("scratchCanvas");
 
 const ctx =
     canvas.getContext("2d");
 
 const scratchCard =
-    document.querySelector(
-        ".scratch-card"
-    );
+    document.querySelector(".scratch-card");
 
 
 function setupScratch(){
@@ -2095,8 +2023,7 @@ function setupScratch(){
     );
 
 
-    ctx.fillStyle =
-        gradient;
+    ctx.fillStyle = gradient;
 
 
     ctx.fillRect(
@@ -2110,14 +2037,11 @@ function setupScratch(){
     ctx.fillStyle =
         "rgba(255,255,255,.8)";
 
-
     ctx.font =
         "16px Tajawal";
 
-
     ctx.textAlign =
         "center";
-
 
     ctx.fillText(
         "♡  اخدشي هنا  ♡",
@@ -2141,8 +2065,7 @@ function setupScratch(){
             Math.PI * 2
         );
 
-        ctx.fillStyle =
-            "#ffffff";
+        ctx.fillStyle = "#ffffff";
 
         ctx.fill();
 
@@ -2150,79 +2073,71 @@ function setupScratch(){
 
 
     ctx.globalAlpha = 1;
-
 }
 
 
 /* =========================
-   SCRATCH
+   SCRATCH SYSTEM
 ========================= */
 
 let scratching = false;
 
+let touchStartX = 0;
+let touchStartY = 0;
+
+let touchDirection = null;
+
+
+/* position */
 
 function getPosition(e){
 
     const rect =
         canvas.getBoundingClientRect();
 
-    let x;
-    let y;
+    let clientX;
+    let clientY;
 
+    if(e.touches && e.touches.length){
 
-    if(e.touches){
+        clientX =
+            e.touches[0].clientX;
 
-        x =
-            e.touches[0].clientX -
-            rect.left;
-
-        y =
-            e.touches[0].clientY -
-            rect.top;
+        clientY =
+            e.touches[0].clientY;
 
     }else{
 
-        x =
-            e.clientX -
-            rect.left;
+        clientX =
+            e.clientX;
 
-        y =
-            e.clientY -
-            rect.top;
+        clientY =
+            e.clientY;
 
     }
 
-
     return {
-        x:x,
-        y:y
+        x:clientX - rect.left,
+        y:clientY - rect.top
     };
-
 }
 
+
+/* scratch */
 
 function scratch(e){
 
     if(!scratching){
-
         return;
-
     }
-
-
-    e.preventDefault();
-
 
     const pos =
         getPosition(e);
 
-
     ctx.globalCompositeOperation =
         "destination-out";
 
-
     ctx.beginPath();
-
 
     ctx.arc(
         pos.x,
@@ -2232,13 +2147,16 @@ function scratch(e){
         Math.PI * 2
     );
 
-
     ctx.fill();
 
+    ctx.globalCompositeOperation =
+        "source-over";
 }
 
 
-/* MOUSE */
+/* =========================
+   MOUSE
+========================= */
 
 canvas.addEventListener(
     "mousedown",
@@ -2252,7 +2170,13 @@ canvas.addEventListener(
 
 canvas.addEventListener(
     "mousemove",
-    scratch
+    function(e){
+
+        if(scratching){
+            scratch(e);
+        }
+
+    }
 );
 
 
@@ -2266,26 +2190,111 @@ window.addEventListener(
 );
 
 
-/* TOUCH */
+/* =========================
+   TOUCH
+========================= */
 
 canvas.addEventListener(
     "touchstart",
     function(e){
 
-        scratching = true;
+        if(!e.touches.length){
+            return;
+        }
 
-        scratch(e);
+        touchStartX =
+            e.touches[0].clientX;
+
+        touchStartY =
+            e.touches[0].clientY;
+
+        touchDirection = null;
+
+        scratching = false;
 
     },
     {
-        passive:false
+        passive:true
     }
 );
 
 
 canvas.addEventListener(
     "touchmove",
-    scratch,
+    function(e){
+
+        if(!e.touches.length){
+            return;
+        }
+
+        const currentX =
+            e.touches[0].clientX;
+
+        const currentY =
+            e.touches[0].clientY;
+
+        const dx =
+            currentX - touchStartX;
+
+        const dy =
+            currentY - touchStartY;
+
+
+        /*
+           نحدد اتجاه الحركة
+        */
+
+        if(!touchDirection){
+
+            if(
+                Math.abs(dx) < 8 &&
+                Math.abs(dy) < 8
+            ){
+                return;
+            }
+
+            if(Math.abs(dx) > Math.abs(dy)){
+
+                /*
+                   حركة أفقية
+                   = خدش
+                */
+
+                touchDirection = "scratch";
+
+                scratching = true;
+
+            }else{
+
+                /*
+                   حركة رأسية
+                   = Scroll
+                */
+
+                touchDirection = "scroll";
+
+                scratching = false;
+
+            }
+
+        }
+
+
+        if(touchDirection === "scratch"){
+
+            e.preventDefault();
+
+            scratch(e);
+
+        }
+
+        /*
+           لو scroll:
+           لا نعمل preventDefault
+           وبالتالي الصفحة تنزل طبيعي
+        */
+
+    },
     {
         passive:false
     }
@@ -2297,6 +2306,8 @@ canvas.addEventListener(
     function(){
 
         scratching = false;
+
+        touchDirection = null;
 
     }
 );
@@ -2310,7 +2321,6 @@ window.addEventListener(
     "load",
     setupScratch
 );
-
 
 window.addEventListener(
     "resize",
