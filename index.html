@@ -12,10 +12,6 @@
 
 *{
     box-sizing:border-box;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 
 html{
@@ -715,6 +711,7 @@ body{
     position:relative;
 }
 
+/* شريط التايم لاين الرأسي */
 .gallery:before{
     content:"";
     position:absolute;
@@ -739,6 +736,7 @@ body{
     transition:transform .5s ease, box-shadow .5s ease;
 }
 
+/* التناوب في ميل الصور مثل تصميم بولاراويد */
 .photo:nth-child(odd){
     transform:rotate(-2.5deg);
 }
@@ -753,6 +751,7 @@ body{
     z-index:10;
 }
 
+/* المشبك / الدبوس الأرجواني في أعلى وأسفل كل كارت */
 .photo:before{
     content:"";
     position:absolute;
@@ -787,7 +786,6 @@ body{
     object-fit:cover;
     display:block;
     border-radius:2px;
-    pointer-events: none;
 }
 
 .photo-caption{
@@ -1250,6 +1248,10 @@ body{
 <main id="main">
 
 
+    <!-- =========================
+         ENVELOPE
+    ========================= -->
+
     <section id="letterSection">
 
         <div class="envelope-area">
@@ -1264,12 +1266,16 @@ body{
                 id="envelopeWrap"
             >
 
+                <!-- PAPER -->
+
                 <div class="paper">
 
                     <div id="paperText"></div>
 
                 </div>
 
+
+                <!-- ENVELOPE -->
 
                 <div class="envelope">
 
@@ -1289,6 +1295,8 @@ body{
             </div>
 
 
+            <!-- OPEN HINT -->
+
             <div class="open-hint">
                 افتحي الظرف ♡
             </div>
@@ -1297,6 +1305,10 @@ body{
 
     </section>
 
+
+    <!-- =========================
+         LOVE MESSAGE
+    ========================= -->
 
     <section id="loveMessage">
 
@@ -1339,6 +1351,10 @@ body{
 
     </section>
 
+
+    <!-- =========================
+         TIMELINE GALLERY (6 PHOTOS)
+    ========================= -->
 
     <section class="gallery-section">
 
@@ -1396,6 +1412,10 @@ body{
     </section>
 
 
+    <!-- =========================
+         SCRATCH MESSAGE
+    ========================= -->
+
     <section class="scratch-section">
 
         <div class="scratch-title">
@@ -1446,6 +1466,10 @@ body{
     </section>
 
 
+    <!-- =========================
+         GIFT
+    ========================= -->
+
     <section class="gift-section">
 
         <div class="gift-title">
@@ -1486,19 +1510,844 @@ body{
     ♫
 </div>
 
-<!-- ANTI-INSPECT AND PROTECTION -->
-<script>
-document.addEventListener('contextmenu', e => e.preventDefault());
-document.addEventListener('keydown', e => {
-    if (e.key === 'F12' || (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S')) || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c'))) {
-        e.preventDefault();
-    }
-});
-</script>
 
-<!-- ENCRYPTED SCRIPT (OBFUSCATED) -->
 <script>
-eval(atob("Y29uc3QgU0VDUkVUPSJvdXJzZWNyZXQiO2NvbnN0IGludHJvPWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJpbnRybyIpLGNvdW50PWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJjb3VudCIpLGxvY2s9ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImxvY2siKSxtYWluPWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJtYWluIikscGFzc3dvcmQ9ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoInBhc3N3b3JkIiksZW50ZXI9ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImVudGVyIiksZXJyb3I9ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImVycm9yIiksbXVzaWM9ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoIm11c2ljIiksZW52ZWxvcGVXcmFwPWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJlbnZlbG9wZVdyYXAiKSxoZWFydD1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgiaGVhcnQiKSxzdGFycz1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgic3RhcnMiKSxmbG93ZXJCdXJzdD1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgiZmxvd2VyQnVyc3QiKSxwYXBlclRleHQ9ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoInBhcGVyVGV4dCIpO2ZvcihsZXQgaT0wO2k8NTU7aSsrKXtjb25zdCBzdGFyPWRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoImRpdiIpO3N0YXIuY2xhc3NOYW1lPSJzdGFyIjtjb25zdCBzeW1ib2xzPVsi4pyEIiwid34iLCLim4EiLCLCoCIsIuKZoSJdO3N0YXIudGV4dENvbnRlbnQ9c3ltYm9sc1tNYXRoLmZsb29yKE1hdGgucmFuZG9tKCkqc3ltYm9scy5sZW5ndGgpXTtzdGFyLnN0eWxlLmxlZnQ9MTAwKk1hdGgucmFuZG9tKCkrInZ3IjtzdGFyLnN0eWxlLnRvcD0xMDAqTWF0aC5yYW5kb20oKSsidmgiO3N0YXIuc3R5bGUuZm9udFNpemU9NytNYXRoLnJhbmRvbSgpKjEyKyJweCI7c3Rhci5zdHlsZS5hbmltYXRpb25EZWxheT01Kk1hdGgucmFuZG9tKCkrInMiO3N0YXIuc3R5bGUuYW5pbWF0aW9uRHVyYXRpb249MytNYXRoLnJhbmRvbSgpKjUrInMiO3N0YXJzLmFwcGVuZENoaWxkKHN0YXIpO31mdW5jdGlvbiBjcmVhdGVQZXRhbCgpe2NvbnN0IHA9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgiZGl2Iik7cC5jbGFzc05hbWU9InBldGFsIjtwLnRleHRDb250ZW50PU1hdGgucmFuZG9tKCk+LjQ1PyLimpoiOiLimpQiO3Auc3R5bGUubGVmdD0xMDAqTWF0aC5yYW5kb20oKSsidnciO3Auc3R5bGUuc2V0UHJvcGVydHkoIi0tZHJpZnQiLC0xMDArMjAwKk1hdGgucmFuZG9tKCkrInB4Iik7cC5zdHlsZS5hbmltYXRpb25EdXJhdGlvbj03KzEqTWF0aC5yYW5kb20oKSsicyI7cC5zdHlsZS5mb250U2l6ZT05KzE1Kk1hdGgucmFuZG9tKCkrInB4Ijtkb2N1bWVudC5ib2R5LmFwcGVuZENoaWxkKHApO3NldFRpbWVvdXQoKCk9PntwLnJlbW92ZSgpO30sMTYwMDApO31mdW5jdGlvbiBmbG93ZXJFeHBsb3Npb24oKXtmbG93ZXJCdXJzdC5zdHlsZS5kaXNwbGF5PSJibG9jayI7Y29uc3QgZmxvd2Vycz1bIkvwn4y5Iiwic/CMsCIsIkvwn4y3Iiwic/CMsCIsIkvwn4y5Iiwic/CMpCIsInPwnLAiLCJLMPCMtIl07Zm9yKGxldCBpPTA7aTw3MDtpKyspe2NvbnN0IGZsb3dlcj1kb2N1bWVudC5jcmVhdGVFbGVtZW50KCJkaXYiKTtmbG93ZXIuY2xhc3NOYW1lPSJidXJzdC1mbG93ZXIiO2Zsb3dlci50ZXh0Q29udGVudD1mbG93ZXJzW01hdGguZmxvb3IoTWF0aC5yYW5kb20oKipmbG93ZXJzLmxlbmd0aCldO2NvbnN0IGFuZ2xlPU1hdGgucmFuZG9tKCkqTWF0aC5QSSoyLGRpc3RhbmNlPTI1MCs2NTAqTWF0aC5yYW5kb20oKSx4PU1hdGguY29zKGFuZ2xlKSpkaXN0YW5jZSx5PU1hdGguc2luKGFuZ2xlKSpkaXN0YW5jZTtmbG93ZXIuc3R5bGUuc2V0UHJvcGVydHkoIi0teCIseCsicHgiKTtmbG93ZXIuc3R5bGUuc2V0UHJvcGVydHkoIi0teSIseSsicHgiKTtmbG93ZXIuc3R5bGUuc2V0UHJvcGVydHkoIi0tc2NhbGUiLC41KzEuNSpNYXRoLnJhbmRvbSgpKTtmbG93ZXIuc3R5bGUuc2V0UHJvcGVydHkoIi0tcm90YXRlIiwtMTgwKzM2MCpNYXRoLnJhbmRvbSgpKyJkZWciKTtmbG93ZXIuc3R5bGUuYW5pbWF0aW9uRGVsYXk9LjQqTWF0aC5yYW5kb20oKSsicyI7Zmxvd2VyQnVyc3QuYXBwZW5kQ2hpbGQoZmxvd2VyKTt9c2V0VGltZW91dCgoKT0+e2Zsb3dlckJ1cnN0LmlubmVySFRNTD0iIjtmbG93ZXJCdXJzdC5zdHlsZS5kaXNwbGF5PSJub25lIjt9LDMzMDApO31sZXQgbj0zO2NvbnN0IHRpbWVyPXNldEludGVydmFsKCgpPT57bi0tO2lmKG4+MCl7Y291bnQudGV4dENvbnRlbnQ9bjtjb3VudC5zdHlsZS5hbmltYXRpb249Im5vbmUiO3ZvaWQgY291bnQub2Zmc2V0SGVpZ2h0O2NvdW50LnN0eWxlLmFuaW1hdGlvbj0icHVsc2UgLjlzIGVhc2UiO31lbHNle2NsZWFySW50ZXJ2YWwodGltZXIpO2ludHJvLnN0eWxlLm9wYWNpdHk9IjAiO3NldFRpbWVvdXQoKCk9PntpbnRyby5zdHlsZS5kaXNwbGF5PSJub25lIjtsb2NrLnN0eWxlLmRpc3BsYXk9ImZsZXgiO30sMTEwMCk7fX0sMTAwMCk7ZnVuY3Rpb24gdW5sb2NrKCl7aWYocGFzc3dvcmQudmFsdWUudHJpbSgpPT09U0VDUkVUKXttdXNpYy5jdXJyZW50VGltZT0wO211c2ljLmxvb3A9ZmFsc2U7bXVzaWMudm9sdW1lPS44O211c2ljLnBsYXkoKS5jYXRjaCgoKT0+e30pO2Zsb3dlckV4cGxvc2lvbigpO2ZvcihsZXQgaT0wO2k8MTg7aSsrKXtzZXRUaW1lb3V0KCgpPT57Y3JlYXRlUGV0YWwoKTt9LGkqMjUwKTt9Y29uc3QgcGV0YWxJbnRlcnZhbD1zZXRJbnRlcnZhbChjcmVhdGVQZXRhbCw4NTApO3NldFRpbWVvdXQoKCk9PntjbGVhckludGVydmFsKHBldGFsSW50ZXJ2YWwpO30sMTgwMDApO2xvY2suc3R5bGUub3BhY2l0eT0iMCI7c2V0VGltZW91dCgoKT0+e2xvY2suc3R5bGUuZGlzcGxheT0ibm9uZSI7bWFpbi5zdHlsZS5vcGFjaXR5PSIxIjt9LDcwMCk7fWVsc2V7ZXJyb3IudGV4dENvbnRlbnQ9IuC3gSDoqLTYoSDioiDioSDiqo3ioK3ioI3ioK3ioKYiO3Bhc3N3b3JkLnZhbHVlPSIiO3Bhc3N3b3JkLmZvY3VzKCk7fX1lbnRlci5hZGRFdmVudExpc3RlbmVyKCJjbGljayIsdW5sb2NrKTtwYXNzd29yZC5hZGRFdmVudExpc3RlbmVyKCJrZXlkb3duIixmdW5jdGlvbihlKXtpZihlLmtleT09PSJFbnRlciIpe3VubG9jaygpO319KTtjb25zdCBsZXR0ZXJUZXh0PSLioSDiqJTYoSDioZTioI3ioK3ioKYiKyIga9io2qHioI0iKyIga9iq4K3ioK3ioI0iKyIg4ri3gSAiKyIga9iq4K3ioK3ioI0iKyIga9iq4K3ioI0iKyIg4ri3gS4uLlxuXG4iKyIga9iq4K3ioI0iKyIg4ri3gSAiKyIga9iq4K3ioI0iKyIga9iq4K3ioI0iKyIg4ri3gS4iKyIga9iq4K3ioI0iKyIg4ri3gS4iKyIga9iq4K3ioI0iKyIg4ri3gS4uLlxuXG4iKyIga9iq4K3ioI0iKyIg4ri3gSAiKyIga9iq4K3ioI0iKyIg4ri3gS4iKyIga9iq4K3ioI0iKyIg4ri3gS4iKyIga9iq4K3ioI0iKyIg4ri3gS4uLiI7ZnVuY3Rpb24gdHlwZUxldHRlcigpe3BhcGVyVGV4dC5pbm5lckhUTUw9IiI7bGV0IGluZGV4PTA7ZnVuY3Rpb24gd3JpdGUoKXtpZihpbmRleDxsZXR0ZXJUZXh0Lmxlbmd0aCl7Y29uc3QgY2hhcj1sZXR0ZXJUZXh0W2luZGV4XTtpZihjaGFyPT09IlxuIil7cGFwZXJUZXh0LmlubmVySFRNTCs9Ijxicj4iO31lbHNle3BhcGVyVGV4dC5pbm5lckhUTUwrPWNoYXI9PT0iICI/IiZuYnNwOyI6Y2hhcjt9aW5kZXgrKztzZXRUaW1lb3V0KHdyaXRlLDQ1KTt9fXdyaXRlKCk7fWhlYXJ0LmFkZEV2ZW50TGlzdGVuZXIoImNsaWNrIixmdW5jdGlvbigpe2lmKGVudmVsb3BlV3JhcC5jbGFzc0xpc3QuY29udGFpbnMoIm9wZW4iKSl7cmV0dXJuO31lbnZlbG9wZVdyYXAuY2xhc3NMaXN0LmFkZCgib3BlbiIpO3NldFRpbWVvdXQoKCk9Pnt0eXBlTGV0dGVyKCk7fSwxMjAwKTt9KTtjb25zdCBjYW52YXM9ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoInNjcmF0Y2hDYW52YXMiKSxjdHg9Y2FudmFzLmdldENvbnRleHQoIjJkIiksIHNjcmF0Y2hDYXJkPWRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoIi5zY3JhdGNoLWNhcmQiKTtmdW5jdGlvbiBzZXR1cFNjcmF0Y2goKXtjb25zdCByZWN0PXNjcmF0Y2hDYXJkLmdldEJvdW5kaW5nQ2xpZW50UmVjdCgpLGRwcj13aW5kb3cuZGV2aWNlUGl4ZWxSYXRpbxx8MTtjYW52YXMud2lkdGg9cmVjdC53aWR0aCpkcHI7Y2FudmFzLmhlaWdodD1yZWN0LmhlaWdodCpkcHI7Y2FudmFzLnN0eWxlLndpZHRoPXJlY3Qud2lkdGgrInB4IjtjYW52YXMuc3R5bGUuaGVpZ2h0PXJlY3QuaGVpZ2h0KyJweCI7Y3R4LnNldFRyYW5zZm9ybShkcHIsMCwwLGRwcjAsMCk7Y29uc3QgZ3JhZGllbnQ9Y3R4LmNyZWF0ZUxpbmVhckdyYWRpZW50KDAsMCxyZWN0LndpZHRoLHJlY3QuaGVpZ2h0KTtncmFkaWVudC5hZGRDb2xvclN0b3AoMCwiI2M4YmJiNiIpO2dyYWRpZW50LmFkZENvbG9yU3RvcCguNSwiI2IxOGFhOTUiKTtncmFkaWVudC5hZGRDb2xvclN0b3AoMSwiI2QzYzc2MiIpO2N0eC5maWxsU3R5bGU9Z3JhZGllbnQ7Y3R4LmZpbGxSZWN0KDAsMCxyZWN0LndpZHRoLHJlY3QuaGVpZ2h0KTtjdHguZmlsbFN0eWxlPSJyZ2JhKDI1NSwyNTUsMjU1LC44KSI7Y3R4LmZvbnQ9IjE2cHggVGFqYXdhbCI7Y3R4LnRleHRBbGlnbj0iY2VudGVyIjtjdHgudmlsbFRleHQoIuKZoSAg2KfZrtiv2LTYpSDilqAiLHJlY3Qud2lkdGgvMixyZWN0LmhlaWdodC8yKTtjdHguZ2xvYmFsQWxwaGE9LjE1O2ZvcihsZXQgaT0wO2k8MjU7aSsrKXtjdHgub3BlblBhdGgoKTtjdHguYXJjKE1hdGgucmFuZG9tKCkqcmVjdC53aWR0aCxNYXRoLnJhbmRvbSgpKnJlY3QuaGVpZ2h0LDIrTWF0aC5yYW5kb20oKSo1LDAsTWF0aC5QSSoyKTtjdHguZmlsbFN0eWxlPSIjZmZmZmZmIjtjdHguZmlsbCgpO31jdHguZ2xvYmFsQWxwaGE9MTt9bGV0IHNjcmF0Y2hpbmc9ZmFsc2UsdG91Y2hTdGFydFg9MCx0b3VjaFN0YXJ0WT0wLHRvdWNoRGlyZWN0aW9uPW51bGw7ZnVuY3Rpb24gZ2V0UG9zaXRpb24oZSl7Y29uc3QgcmVjdD1jYW52YXMuZ2V0Qm91bmRpbmdDbGllbnRSZWN0KCk7bGV0IGNsaWVudFgsY2xpZW50WTtpZihlLnRvdWNoZXMmJmUudG91Y2hlcy5sZW5ndGgpe2NsaWVudFg9ZS50b3VjaGVzWzBdLmNsaWVudFg7Y2xpZW50WT1lLnRvdWNoZXNbMF0uY2xpZW50WTt9ZWxzZXtjbGllbnRYPWUuY2xpZW50WDtjbGllbnRZPWUuY2xpZW50WTt9cmV0dXJue3g6Y2xpZW50WC1yZWN0LmxlZnQseTpjbGllbnRZLXJlY3QudG9wfTt9ZnVuY3Rpb24gc2NyYXRjaChlKXtpZighc2NyYXRjaGluZylyZXR1cm47Y29uc3QgcG9zPWdldFBvc2l0aW9uKGUpO2N0eC5nbG9iYWxDb21wb3NpdGVPcGVyYXRpb249ImRlc3RpbmF0aW9uLW91dCI7Y3R4LmJlZ2luUGF0aCgpO2N0eC5hcmMocG9zLngscG9zLnksMjUsMCxNYXRoLlBJKjIpO2N0eC5maWxsKCk7Y3R4Lmdsb2JhbENvbXBvc2l0ZU9wZXJhdGlvbj0ic291cmNlLW92ZXIiO31jYW52YXMuYWRkRXZlbnRMaXN0ZW5lcigibW91c2Vkb3duIixmdW5jdGlvbigpe3NjcmF0Y2hpbmc9dHJ1ZTt9KTtjYW52YXMuYWRkRXZlbnRMaXN0ZW5lcigibW91c2Vtb3ZlIixmdW5jdGlvbihlKXtpZihzY3JhdGNoaW5nKXNzY3JhdGNoKGUpO30pO3dpbmRvdy5hZGRFdmVudExpc3RlbmVyKCJtb3VzZXVwIixmdW5jdGlvbigpe3NjcmF0Y2hpbmc9ZmFsc2U7fSk7Y2FudmFzLmFkZEV2ZW50TGlzdGVuZXIoInRvdWNoc3RhcnQiLGZ1bmN0aW9uKGUpe2lmKCFlLnRvdWNoZXMubGVuZ3RoKXJldHVybjt0b3VjaFN0YXJ0WD1lLnRvdWNoZXNbMF0uY2xpZW50WDt0b3VjaFN0YXJ0WT1lLnRvdWNoZXNbMF0uY2xpZW50WTt0b3VjaERpcmVjdGlvbj1udWxsO3NjcmF0Y2hpbmc9ZmFsc2U7fSx7cGFzc2l2ZTp0cnVlfSk7Y2FudmFzLmFkZEV2ZW50TGlzdGVuZXIoInRvdWNobW92ZSIsZnVuY3Rpb24oZSl7aWYoIWUudG91Y2hlcy5sZW5ndGgpcmV0dXJuO2NvbnN0IGN1cnJlbnRYPWUudG91Y2hlc1swXS5jbGllbnRYLGN1cnJlbnRZPWUudG91Y2hlc1swXS5jbGllbnRZLGR4PWN1cnJlbnRYLXRvdWNoU3RhcnRYLGR5PWN1cnJlbnRZLXRvdWNoU3RhcnRZO2lmKCF0b3VjaERpcmVjdGlvbil7aWYoTWF0aC5hYnMoZHgpPDgmJk1hdGguYWJzKGR5KTw4KXJldHVybjtpZihNYXRoLmFicyhkeD4pTWF0aC5hYnMoZHkpKXt0b3VjaERpcmVjdGlvbj0ic2NyYXRjaCI7c2NyYXRjaGluZz10cnVlO31lbHNle3RvdWNoRGlyZWN0aW9uPSJzY3JvbGwiO3NjcmF0Y2hpbmc9ZmFsc2U7fX1pZih0b3VjaERpcmVjdGlvbj09PSJzY3JhdGNoIil7ZS5wcmV2ZW50RGVmYXVsdCgpO3NjcmF0Y2goZSk7fX0se3Bhc3NpdmU6ZmFsc2V9KTtjYW52YXMuYWRkRXZlbnRMaXN0ZW5lcigidG91Y2hlbmQiLGZ1bmN0aW9uKCl7c2NyYXRjaGluZz1mYWxzZTt0b3VjaERpcmVjdGlvbj1udWxsO30pO3dpbmRvdy5hZGRFdmVudExpc3RlbmVyKCJsb2FkIixzZXR1cFNjcmF0Y2gpO3dpbmRvdy5hZGRFdmVudExpc3RlbmVyKCJyZXNpemUiLHNldHVwU2NyYXRjaCk7ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImdpZnQiKS5hZGRFdmVudExpc3RlbmVyKCJjbGljayIsZnVuY3Rpb24oKXthbGVydCgi2KPZhtiq2IEg2KPYrNm22YQg2YfZgdiv2Ykg2KPZtdmE2Ysg4p2kIik7fSk7"));
+
+/* =========================
+   PASSWORD
+========================= */
+
+const SECRET = "oursecret";
+
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const intro =
+    document.getElementById("intro");
+
+const count =
+    document.getElementById("count");
+
+const lock =
+    document.getElementById("lock");
+
+const main =
+    document.getElementById("main");
+
+const password =
+    document.getElementById("password");
+
+const enter =
+    document.getElementById("enter");
+
+const error =
+    document.getElementById("error");
+
+const music =
+    document.getElementById("music");
+
+const envelopeWrap =
+    document.getElementById("envelopeWrap");
+
+const heart =
+    document.getElementById("heart");
+
+const stars =
+    document.getElementById("stars");
+
+const flowerBurst =
+    document.getElementById("flowerBurst");
+
+const paperText =
+    document.getElementById("paperText");
+
+
+/* =========================
+   STARS
+========================= */
+
+for(let i = 0; i < 55; i++){
+
+    const star =
+        document.createElement("div");
+
+    star.className = "star";
+
+    const symbols = [
+        "✦",
+        "✧",
+        "⋆",
+        "·",
+        "♡"
+    ];
+
+    star.textContent =
+        symbols[
+            Math.floor(
+                Math.random() *
+                symbols.length
+            )
+        ];
+
+    star.style.left =
+        Math.random() * 100 + "vw";
+
+    star.style.top =
+        Math.random() * 100 + "vh";
+
+    star.style.fontSize =
+        (7 + Math.random() * 12) + "px";
+
+    star.style.animationDelay =
+        Math.random() * 5 + "s";
+
+    star.style.animationDuration =
+        (3 + Math.random() * 5) + "s";
+
+    stars.appendChild(star);
+}
+
+
+/* =========================
+   FALLING PETALS
+========================= */
+
+function createPetal(){
+
+    const p =
+        document.createElement("div");
+
+    p.className = "petal";
+
+    p.textContent =
+        Math.random() > .45
+        ? "♡"
+        : "✦";
+
+    p.style.left =
+        Math.random() * 100 + "vw";
+
+    p.style.setProperty(
+        "--drift",
+        (-100 + Math.random() * 200) + "px"
+    );
+
+    p.style.animationDuration =
+        (7 + Math.random() * 8) + "s";
+
+    p.style.fontSize =
+        (9 + Math.random() * 15) + "px";
+
+    document.body.appendChild(p);
+
+    setTimeout(() => {
+        p.remove();
+    },16000);
+}
+
+
+/* =========================
+   FLOWER EXPLOSION
+========================= */
+
+function flowerExplosion(){
+
+    flowerBurst.style.display = "block";
+
+    const flowers = [
+        "🌹",
+        "🌸",
+        "🌷",
+        "🌺",
+        "🌹",
+        "💗",
+        "🌸",
+        "🌷"
+    ];
+
+    for(let i = 0; i < 70; i++){
+
+        const flower =
+            document.createElement("div");
+
+        flower.className =
+            "burst-flower";
+
+        flower.textContent =
+            flowers[
+                Math.floor(
+                    Math.random() *
+                    flowers.length
+                )
+            ];
+
+        const angle =
+            Math.random() *
+            Math.PI * 2;
+
+        const distance =
+            250 +
+            Math.random() * 650;
+
+        const x =
+            Math.cos(angle) *
+            distance;
+
+        const y =
+            Math.sin(angle) *
+            distance;
+
+        flower.style.setProperty(
+            "--x",
+            x + "px"
+        );
+
+        flower.style.setProperty(
+            "--y",
+            y + "px"
+        );
+
+        flower.style.setProperty(
+            "--scale",
+            .5 + Math.random() * 1.5
+        );
+
+        flower.style.setProperty(
+            "--rotate",
+            (-180 + Math.random() * 360) + "deg"
+        );
+
+        flower.style.animationDelay =
+            Math.random() * .4 + "s";
+
+        flowerBurst.appendChild(flower);
+    }
+
+    setTimeout(() => {
+
+        flowerBurst.innerHTML = "";
+
+        flowerBurst.style.display = "none";
+
+    },3300);
+}
+
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+let n = 3;
+
+const timer =
+    setInterval(() => {
+
+        n--;
+
+        if(n > 0){
+
+            count.textContent = n;
+
+            count.style.animation = "none";
+
+            void count.offsetWidth;
+
+            count.style.animation =
+                "pulse .9s ease";
+
+        }else{
+
+            clearInterval(timer);
+
+            intro.style.opacity = "0";
+
+            setTimeout(() => {
+
+                intro.style.display = "none";
+
+                lock.style.display = "flex";
+
+            },1100);
+
+        }
+
+    },1000);
+
+
+/* =========================
+   UNLOCK
+========================= */
+
+function unlock(){
+
+    if(password.value.trim() === SECRET){
+
+        /* الموسيقى تبدأ فور الضغط */
+
+        music.currentTime = 0;
+        music.loop = false;
+        music.volume = .8;
+
+        music.play().catch(() => {});
+
+
+        /* الورد */
+
+        flowerExplosion();
+
+
+        /* بتلات أولية */
+
+        for(let i = 0; i < 18; i++){
+
+            setTimeout(() => {
+                createPetal();
+            },i * 250);
+
+        }
+
+
+        /* بتلات مستمرة */
+
+        const petalInterval =
+            setInterval(
+                createPetal,
+                850
+            );
+
+
+        setTimeout(() => {
+
+            clearInterval(
+                petalInterval
+            );
+
+        },18000);
+
+
+        lock.style.opacity = "0";
+
+
+        setTimeout(() => {
+
+            lock.style.display = "none";
+
+            main.style.opacity = "1";
+
+        },700);
+
+    }else{
+
+        error.textContent =
+            "كلمة السر مش صحيحة ♡";
+
+        password.value = "";
+
+        password.focus();
+
+    }
+}
+
+
+enter.addEventListener(
+    "click",
+    unlock
+);
+
+
+password.addEventListener(
+    "keydown",
+    function(e){
+
+        if(e.key === "Enter"){
+            unlock();
+        }
+
+    }
+);
+
+
+/* =========================
+   LETTER
+========================= */
+
+const letterText =
+`إلى الشخص اللي وجوده
+خلّى أيامي أجمل...
+
+يمكن مش بعرف أقول كل اللي جوايا،
+بس حبيت أسيبلك الكلام ده
+عشان كل ما تقريه تفتكري
+إن في حد بيقدّر وجودك جدًا.
+
+خليكي دايمًا بخير،
+ومتنسيش إن في حد
+بيتمنى يشوفك مبسوطة دايمًا. ♡`;
+
+
+/* =========================
+   TYPEWRITER
+========================= */
+
+function typeLetter(){
+
+    paperText.innerHTML = "";
+
+    let index = 0;
+
+    function write(){
+
+        if(index < letterText.length){
+
+            const char =
+                letterText[index];
+
+            if(char === "\n"){
+
+                paperText.innerHTML += "<br>";
+
+            }else{
+
+                paperText.innerHTML +=
+                    char === " "
+                    ? "&nbsp;"
+                    : char;
+            }
+
+            index++;
+
+            setTimeout(
+                write,
+                45
+            );
+
+        }
+
+    }
+
+    write();
+}
+
+
+/* =========================
+   OPEN ENVELOPE
+========================= */
+
+heart.addEventListener(
+    "click",
+    function(){
+
+        if(
+            envelopeWrap.classList.contains("open")
+        ){
+            return;
+        }
+
+        envelopeWrap.classList.add("open");
+
+
+        /* الورقة تطلع ثم تبدأ الكتابة */
+
+        setTimeout(() => {
+
+            typeLetter();
+
+        },1200);
+
+    }
+);
+
+
+/* =========================
+   SCRATCH CARD
+========================= */
+
+const canvas =
+    document.getElementById("scratchCanvas");
+
+const ctx =
+    canvas.getContext("2d");
+
+const scratchCard =
+    document.querySelector(".scratch-card");
+
+
+function setupScratch(){
+
+    const rect =
+        scratchCard.getBoundingClientRect();
+
+    const dpr =
+        window.devicePixelRatio || 1;
+
+
+    canvas.width =
+        rect.width * dpr;
+
+    canvas.height =
+        rect.height * dpr;
+
+
+    canvas.style.width =
+        rect.width + "px";
+
+    canvas.style.height =
+        rect.height + "px";
+
+
+    ctx.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+    );
+
+
+    const gradient =
+        ctx.createLinearGradient(
+            0,
+            0,
+            rect.width,
+            rect.height
+        );
+
+
+    gradient.addColorStop(
+        0,
+        "#c8bbb6"
+    );
+
+    gradient.addColorStop(
+        .5,
+        "#b8aaa5"
+    );
+
+    gradient.addColorStop(
+        1,
+        "#d3c7c2"
+    );
+
+
+    ctx.fillStyle = gradient;
+
+
+    ctx.fillRect(
+        0,
+        0,
+        rect.width,
+        rect.height
+    );
+
+
+    ctx.fillStyle =
+        "rgba(255,255,255,.8)";
+
+    ctx.font =
+        "16px Tajawal";
+
+    ctx.textAlign =
+        "center";
+
+    ctx.fillText(
+        "♡  اخدشي هنا  ♡",
+        rect.width / 2,
+        rect.height / 2
+    );
+
+
+    ctx.globalAlpha = .15;
+
+
+    for(let i = 0; i < 25; i++){
+
+        ctx.beginPath();
+
+        ctx.arc(
+            Math.random() * rect.width,
+            Math.random() * rect.height,
+            2 + Math.random() * 5,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fillStyle = "#ffffff";
+
+        ctx.fill();
+
+    }
+
+
+    ctx.globalAlpha = 1;
+}
+
+
+/* =========================
+   SCRATCH SYSTEM
+========================= */
+
+let scratching = false;
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+let touchDirection = null;
+
+
+/* position */
+
+function getPosition(e){
+
+    const rect =
+        canvas.getBoundingClientRect();
+
+    let clientX;
+    let clientY;
+
+    if(e.touches && e.touches.length){
+
+        clientX =
+            e.touches[0].clientX;
+
+        clientY =
+            e.touches[0].clientY;
+
+    }else{
+
+        clientX =
+            e.clientX;
+
+        clientY =
+            e.clientY;
+
+    }
+
+    return {
+        x:clientX - rect.left,
+        y:clientY - rect.top
+    };
+}
+
+
+/* scratch */
+
+function scratch(e){
+
+    if(!scratching){
+        return;
+    }
+
+    const pos =
+        getPosition(e);
+
+    ctx.globalCompositeOperation =
+        "destination-out";
+
+    ctx.beginPath();
+
+    ctx.arc(
+        pos.x,
+        pos.y,
+        25,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+
+    ctx.globalCompositeOperation =
+        "source-over";
+}
+
+
+/* =========================
+   MOUSE
+========================= */
+
+canvas.addEventListener(
+    "mousedown",
+    function(){
+
+        scratching = true;
+
+    }
+);
+
+
+canvas.addEventListener(
+    "mousemove",
+    function(e){
+
+        if(scratching){
+            scratch(e);
+        }
+
+    }
+);
+
+
+window.addEventListener(
+    "mouseup",
+    function(){
+
+        scratching = false;
+
+    }
+);
+
+
+/* =========================
+   TOUCH
+========================= */
+
+canvas.addEventListener(
+    "touchstart",
+    function(e){
+
+        if(!e.touches.length){
+            return;
+        }
+
+        touchStartX =
+            e.touches[0].clientX;
+
+        touchStartY =
+            e.touches[0].clientY;
+
+        touchDirection = null;
+
+        scratching = false;
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+canvas.addEventListener(
+    "touchmove",
+    function(e){
+
+        if(!e.touches.length){
+            return;
+        }
+
+        const currentX =
+            e.touches[0].clientX;
+
+        const currentY =
+            e.touches[0].clientY;
+
+        const dx =
+            currentX - touchStartX;
+
+        const dy =
+            currentY - touchStartY;
+
+
+        /*
+           نحدد اتجاه الحركة
+        */
+
+        if(!touchDirection){
+
+            if(
+                Math.abs(dx) < 8 &&
+                Math.abs(dy) < 8
+            ){
+                return;
+            }
+
+            if(Math.abs(dx) > Math.abs(dy)){
+
+                /*
+                   حركة أفقية
+                   = خدش
+                */
+
+                touchDirection = "scratch";
+
+                scratching = true;
+
+            }else{
+
+                /*
+                   حركة رأسية
+                   = Scroll
+                */
+
+                touchDirection = "scroll";
+
+                scratching = false;
+
+            }
+
+        }
+
+
+        if(touchDirection === "scratch"){
+
+            e.preventDefault();
+
+            scratch(e);
+
+        }
+
+    },
+    {
+        passive:false
+    }
+);
+
+
+canvas.addEventListener(
+    "touchend",
+    function(){
+
+        scratching = false;
+
+        touchDirection = null;
+
+    }
+);
+
+
+/* =========================
+   SCRATCH SETUP
+========================= */
+
+window.addEventListener(
+    "load",
+    setupScratch
+);
+
+window.addEventListener(
+    "resize",
+    setupScratch
+);
+
+
+/* =========================
+   GIFT
+========================= */
+
+document
+.getElementById("gift")
+.addEventListener(
+    "click",
+    function(){
+
+        alert(
+            "أنتِ أجمل هدية أصلًا ❤️"
+        );
+
+    }
+);
+
 </script>
 
 </body>
