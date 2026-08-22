@@ -931,8 +931,6 @@ body{
     background:#faf7f5cc;
 
     backdrop-filter:blur(5px);
-
-    cursor:pointer;
 }
 
 /* =========================
@@ -1318,7 +1316,7 @@ body{
 </main>
 
 
-<div class="music-note" id="musicBtn">
+<div class="music-note">
     ♫
 </div>
 
@@ -1334,9 +1332,6 @@ const main =
 
 const music =
     document.getElementById("music");
-
-const musicBtn =
-    document.getElementById("musicBtn");
 
 const envelopeWrap =
     document.getElementById("envelopeWrap");
@@ -1526,17 +1521,32 @@ function flowerExplosion(){
 
 
 /* =========================
-   MUSIC TOGGLE
+   ON LOAD INIT
 ========================= */
 
-musicBtn.addEventListener("click", () => {
-    if (music.paused) {
-        music.currentTime = 0;
-        music.volume = .8;
-        music.play().catch(() => {});
-    } else {
-        music.pause();
+window.addEventListener("load", () => {
+    /* الموسيقى تبدأ فور الفتح */
+    music.currentTime = 0;
+    music.loop = false;
+    music.volume = .8;
+    music.play().catch(() => {});
+
+    /* الورد */
+    flowerExplosion();
+
+    /* بتلات أولية */
+    for(let i = 0; i < 18; i++){
+        setTimeout(() => {
+            createPetal();
+        }, i * 250);
     }
+
+    /* بتلات مستمرة */
+    const petalInterval = setInterval(createPetal, 850);
+
+    setTimeout(() => {
+        clearInterval(petalInterval);
+    }, 18000);
 });
 
 
@@ -1618,11 +1628,6 @@ heart.addEventListener(
 
         envelopeWrap.classList.add("open");
 
-        /* تشغيل الموسيقى والورد عند فتح الظرف */
-        music.currentTime = 0;
-        music.volume = .8;
-        music.play().catch(() => {});
-        flowerExplosion();
 
         /* الورقة تطلع ثم تبدأ الكتابة */
 
