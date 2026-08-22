@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>For You ♡</title>
 
 <style>
-
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Tajawal:wght@300;400;500&display=swap');
 
 *{
@@ -27,9 +25,110 @@ body{
 }
 
 /* =========================
+   LOCK / COUNTDOWN SCREEN
+========================= */
+#lockScreen{
+    position:fixed;
+    inset:0;
+    background:#faf7f5;
+    z-index:999;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    text-align:center;
+    transition:opacity .8s ease, visibility .8s ease;
+}
+
+.lock-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:28px;
+    color:#a18d88;
+    margin-bottom:20px;
+}
+
+.countdown{
+    display:flex;
+    gap:15px;
+    margin-bottom:30px;
+}
+
+.time-box{
+    background:#fff;
+    padding:12px 18px;
+    border-radius:8px;
+    box-shadow:0 5px 15px rgba(0,0,0,.05);
+    border:1px solid #eee3df;
+}
+
+.time-num{
+    font-size:22px;
+    font-weight:bold;
+    color:#735d67;
+}
+
+.time-label{
+    font-size:11px;
+    color:#aa95a1;
+}
+
+.pass-container{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    width:min(280px, 90%);
+}
+
+.pass-input{
+    padding:12px;
+    border-radius:25px;
+    border:1px solid #d8b4ac;
+    outline:none;
+    text-align:center;
+    font-size:16px;
+    background:#fff;
+    color:#403938;
+}
+
+.login-btn{
+    padding:12px;
+    border-radius:25px;
+    border:none;
+    background:#e6c9c2;
+    color:#403938;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+    font-weight:500;
+}
+
+.login-btn:hover{
+    background:#d8b4ac;
+}
+
+/* =========================
+   FULLSCREEN FLOWER OVERLAY
+========================= */
+#flowerOverlay{
+    position:fixed;
+    inset:0;
+    z-index:900;
+    pointer-events:none;
+    background-image:url('https://i.ibb.co/6R2p2QJ/flowers-bg.jpg'); /* تقدر تستبدله بـ ./flowers.jpg */
+    background-size:cover;
+    background-position:center;
+    opacity:0;
+    transition:opacity .3s ease;
+}
+
+#flowerOverlay.active{
+    opacity:1;
+}
+
+/* =========================
    STARS
 ========================= */
-
 #stars{
     position:fixed;
     inset:0;
@@ -47,21 +146,13 @@ body{
 }
 
 @keyframes twinkle{
-    0%,100%{
-        opacity:0;
-        transform:scale(.6);
-    }
-
-    50%{
-        opacity:.75;
-        transform:scale(1.2);
-    }
+    0%,100%{ opacity:0; transform:scale(.6); }
+    50%{ opacity:.75; transform:scale(1.2); }
 }
 
 /* =========================
    FALLING PETALS
 ========================= */
-
 .petal{
     position:fixed;
     top:-50px;
@@ -73,87 +164,17 @@ body{
 }
 
 @keyframes fall{
-
-    0%{
-        transform:
-            translateY(-50px)
-            translateX(0)
-            rotate(0deg);
-        opacity:0;
-    }
-
-    10%{
-        opacity:.8;
-    }
-
-    100%{
-        transform:
-            translateY(110vh)
-            translateX(var(--drift))
-            rotate(500deg);
-        opacity:0;
-    }
-}
-
-/* =========================
-   FLOWER BURST
-========================= */
-
-#flowerBurst{
-    position:fixed;
-    inset:0;
-    z-index:150;
-    pointer-events:none;
-    overflow:hidden;
-    display:none;
-}
-
-.burst-flower{
-    position:absolute;
-    left:50%;
-    top:50%;
-    font-size:28px;
-    opacity:0;
-    animation:burst 2.8s ease-out forwards;
-}
-
-@keyframes burst{
-
-    0%{
-        transform:
-            translate(-50%,-50%)
-            scale(.2)
-            rotate(0deg);
-        opacity:0;
-    }
-
-    15%{
-        opacity:1;
-    }
-
-    100%{
-        transform:
-            translate(
-                calc(-50% + var(--x)),
-                calc(-50% + var(--y))
-            )
-            scale(var(--scale))
-            rotate(var(--rotate));
-        opacity:0;
-    }
+    0%{ transform:translateY(-50px) translateX(0) rotate(0deg); opacity:0; }
+    10%{ opacity:.8; }
+    100%{ transform:translateY(110vh) translateX(var(--drift)) rotate(500deg); opacity:0; }
 }
 
 /* =========================
    MAIN
 ========================= */
-
 #main{
     min-height:100vh;
-
     opacity:1;
-
-    transition:opacity 2s ease;
-
     position:relative;
     z-index:2;
 }
@@ -161,17 +182,12 @@ body{
 /* =========================
    ENVELOPE SECTION
 ========================= */
-
 #letterSection{
-
     min-height:auto;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     padding:95px 20px 35px;
-
     position:relative;
 }
 
@@ -181,216 +197,112 @@ body{
 }
 
 .letter-title{
-
     font-family:'Cormorant Garamond',serif;
-
     font-size:21px;
-
     color:#a18d88;
-
     letter-spacing:3px;
-
     margin-bottom:48px;
-
     position:relative;
     z-index:20;
 }
 
-/* =========================
-   ENVELOPE WRAPPER
-========================= */
-
 .envelope-wrap{
-
     position:relative;
-
     width:340px;
     height:380px;
-
     margin:0 auto;
 }
 
-/* =========================
-   PAPER
-========================= */
-
 .paper{
-
     position:absolute;
-
     left:50%;
     bottom:20px;
-
     width:275px;
     height:225px;
-
     padding:22px 25px;
-
     background:#fffdfb;
-
     border:1px solid #eee3df;
-
-    box-shadow:
-        0 10px 30px rgba(70,45,40,.12);
-
+    box-shadow:0 10px 30px rgba(70,45,40,.12);
     transform:translateX(-50%);
-
     opacity:0;
-
     z-index:2;
-
     overflow:hidden;
-
-    transition:
-        transform 1.2s ease,
-        opacity 1s ease;
+    transition:transform 1.2s ease, opacity 1s ease;
 }
 
 .envelope-wrap.open .paper{
-
     opacity:1;
-
-    transform:
-        translate(-50%,-150px);
-
+    transform:translate(-50%,-150px);
     z-index:9;
 }
 
 #paperText{
-
     width:100%;
-
     height:180px;
-
     overflow:hidden;
-
     font-family:'Cormorant Garamond',serif;
-
     font-size:20px;
-
     line-height:1.55;
-
     text-align:center;
-
     overflow-wrap:break-word;
 }
 
-/* =========================
-   ENVELOPE
-========================= */
-
 .envelope{
-
     position:absolute;
-
     left:50%;
     bottom:20px;
-
     transform:translateX(-50%);
-
     width:340px;
     height:210px;
-
     background:#eadbd6;
-
     border-radius:6px;
-
-    box-shadow:
-        0 18px 45px rgba(70,45,40,.16);
-
+    box-shadow:0 18px 45px rgba(70,45,40,.16);
     z-index:3;
 }
 
 .envelope-front{
-
     position:absolute;
     inset:0;
-
     background:#eadbd6;
-
     border-radius:6px;
-
     overflow:hidden;
-
     z-index:4;
 }
 
 .envelope-front:before{
-
     content:"";
-
     position:absolute;
-
     left:0;
     bottom:0;
-
     width:0;
     height:0;
-
     border-style:solid;
-
-    border-width:
-        105px 170px 0 0;
-
-    border-color:
-        #dfcdc7
-        transparent
-        transparent
-        transparent;
+    border-width:105px 170px 0 0;
+    border-color:#dfcdc7 transparent transparent transparent;
 }
 
 .envelope-front:after{
-
     content:"";
-
     position:absolute;
-
     right:0;
     bottom:0;
-
     width:0;
     height:0;
-
     border-style:solid;
-
-    border-width:
-        105px 0 0 170px;
-
-    border-color:
-        #dfcdc7
-        transparent
-        transparent
-        transparent;
+    border-width:105px 0 0 170px;
+    border-color:#dfcdc7 transparent transparent transparent;
 }
 
-/* =========================
-   FLAP
-========================= */
-
 .flap{
-
     position:absolute;
-
     left:0;
     top:0;
-
     width:100%;
     height:120px;
-
     background:#e3d1cb;
-
-    clip-path:
-        polygon(
-            0 0,
-            100% 0,
-            50% 100%
-        );
-
+    clip-path:polygon(0 0, 100% 0, 50% 100%);
     transform-origin:top center;
-
-    transition:
-        transform 1.2s ease;
-
+    transition:transform 1.2s ease;
     z-index:7;
 }
 
@@ -398,1164 +310,357 @@ body{
     transform:rotateX(180deg);
 }
 
-/* =========================
-   HEART
-========================= */
-
 .heart{
-
     position:absolute;
-
     left:50%;
     top:50%;
-
-    transform:
-        translate(-50%,-50%);
-
+    transform:translate(-50%,-50%);
     width:64px;
     height:64px;
-
     border-radius:50%;
-
     background:#fff8f6;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     font-size:32px;
-
-    box-shadow:
-        0 8px 25px rgba(70,45,40,.18);
-
+    box-shadow:0 8px 25px rgba(70,45,40,.18);
     cursor:pointer;
-
     z-index:10;
-
     transition:.3s;
 }
 
 .heart:hover{
-
-    transform:
-        translate(-50%,-50%)
-        scale(1.1);
+    transform:translate(-50%,-50%) scale(1.1);
 }
 
 .envelope-wrap.open .heart{
-
     opacity:0;
-
     pointer-events:none;
 }
 
-/* =========================
-   OPEN HINT
-========================= */
-
 .open-hint{
-
     margin-top:0;
-
     font-family:'Cormorant Garamond',serif;
-
     font-size:20px;
-
     color:#a18d88;
-
     letter-spacing:2px;
-
-    animation:
-        hintFloat 2.5s ease-in-out infinite;
+    animation:hintFloat 2.5s ease-in-out infinite;
 }
 
 @keyframes hintFloat{
-
-    0%,100%{
-        transform:translateY(0);
-        opacity:.65;
-    }
-
-    50%{
-        transform:translateY(-5px);
-        opacity:1;
-    }
+    0%,100%{ transform:translateY(0); opacity:.65; }
+    50%{ transform:translateY(-5px); opacity:1; }
 }
 
 /* =========================
    LOVE MESSAGE
 ========================= */
-
 #loveMessage{
-
     max-width:700px;
-
     margin:0 auto;
-
     padding:55px 25px 100px;
-
     text-align:center;
-
-    opacity:1;
-
-    transform:none;
 }
 
-.message-small{
-
-    font-size:11px;
-
-    letter-spacing:4px;
-
-    color:#a18d88;
-}
-
-.message-title{
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:58px;
-
-    font-weight:300;
-
-    margin:18px 0 25px;
-}
-
-.message-text{
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:25px;
-
-    line-height:1.9;
-
-    font-weight:300;
-}
-
-.signature{
-
-    margin-top:35px;
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:22px;
-
-    font-style:italic;
-}
+.message-small{ font-size:11px; letter-spacing:4px; color:#a18d88; }
+.message-title{ font-family:'Cormorant Garamond',serif; font-size:58px; font-weight:300; margin:18px 0 25px; }
+.message-text{ font-family:'Cormorant Garamond',serif; font-size:25px; line-height:1.9; font-weight:300; }
+.signature{ margin-top:35px; font-family:'Cormorant Garamond',serif; font-size:22px; font-style:italic; }
 
 /* =========================
-   TIMELINE GALLERY (POLAROID)
+   TIMELINE GALLERY
 ========================= */
-
-.gallery-section{
-    padding:100px 20px 140px;
-    text-align:center;
-    position:relative;
-}
-
-.gallery-title{
-    font-family:'Cormorant Garamond',serif;
-    font-size:54px;
-    font-weight:300;
-    margin-bottom:70px;
-}
-
-.gallery{
-    width:min(440px,92%);
-    margin:auto;
-    display:flex;
-    flex-direction:column;
-    gap:90px;
-    position:relative;
-}
-
-/* شريط التايم لاين الرأسي */
+.gallery-section{ padding:100px 20px 140px; text-align:center; position:relative; }
+.gallery-title{ font-family:'Cormorant Garamond',serif; font-size:54px; font-weight:300; margin-bottom:70px; }
+.gallery{ width:min(440px,92%); margin:auto; display:flex; flex-direction:column; gap:90px; position:relative; }
 .gallery:before{
-    content:"";
-    position:absolute;
-    top:-30px;
-    bottom:-30px;
-    left:50%;
-    width:2px;
-    background:dotted #9c89b3;
-    border-left:2px dashed #a48bbd;
-    transform:translateX(-50%);
-    z-index:1;
-    opacity:.6;
+    content:""; position:absolute; top:-30px; bottom:-30px; left:50%; width:2px;
+    background:dotted #9c89b3; border-left:2px dashed #a48bbd; transform:translateX(-50%); z-index:1; opacity:.6;
 }
 
 .photo{
-    position:relative;
-    padding:16px 16px 20px 16px;
-    background:#fff;
-    box-shadow:0 12px 35px rgba(80,50,45,.12);
-    border-radius:4px;
-    z-index:2;
-    transition:transform .5s ease, box-shadow .5s ease;
+    position:relative; padding:16px 16px 20px 16px; background:#fff;
+    box-shadow:0 12px 35px rgba(80,50,45,.12); border-radius:4px; z-index:2; transition:transform .5s ease;
 }
-
-/* التناوب في ميل الصور مثل تصميم بولاراويد */
-.photo:nth-child(odd){
-    transform:rotate(-2.5deg);
+.photo:nth-child(odd){ transform:rotate(-2.5deg); }
+.photo:nth-child(even){ transform:rotate(2.5deg); }
+.photo:hover{ transform:rotate(0deg) scale(1.02); z-index:10; }
+.photo:before, .photo:after{
+    content:""; position:absolute; left:50%; transform:translateX(-50%); width:16px; height:26px;
+    background:#9b72cf; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,.2); z-index:6;
 }
-
-.photo:nth-child(even){
-    transform:rotate(2.5deg);
-}
-
-.photo:hover{
-    transform:rotate(0deg) scale(1.02);
-    box-shadow:0 20px 45px rgba(80,50,45,.18);
-    z-index:10;
-}
-
-/* المشبك / الدبوس الأرجواني في أعلى وأسفل كل كارت */
-.photo:before{
-    content:"";
-    position:absolute;
-    top:-14px;
-    left:50%;
-    transform:translateX(-50%);
-    width:16px;
-    height:26px;
-    background:#9b72cf;
-    border-radius:8px;
-    box-shadow:0 2px 6px rgba(0,0,0,.2);
-    z-index:6;
-}
-
-.photo:after{
-    content:"";
-    position:absolute;
-    bottom:-14px;
-    left:50%;
-    transform:translateX(-50%);
-    width:16px;
-    height:26px;
-    background:#9b72cf;
-    border-radius:8px;
-    box-shadow:0 2px 6px rgba(0,0,0,.2);
-    z-index:6;
-}
-
-.photo img{
-    width:100%;
-    aspect-ratio:1/1.05;
-    object-fit:cover;
-    display:block;
-    border-radius:2px;
-}
-
-.photo-caption{
-    margin-top:15px;
-    font-family:'Tajawal',sans-serif;
-    font-size:16px;
-    color:#735d67;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:4px;
-}
-
-.photo-caption .date{
-    font-size:12px;
-    color:#aa95a1;
-    background:#f4edf7;
-    padding:2px 10px;
-    border-radius:12px;
-}
-
-.photo-caption .emoji{
-    font-size:22px;
-}
+.photo:before{ top:-14px; }
+.photo:after{ bottom:-14px; }
+.photo img{ width:100%; aspect-ratio:1/1.05; object-fit:cover; display:block; border-radius:2px; }
+.photo-caption{ margin-top:15px; font-size:16px; color:#735d67; display:flex; flex-direction:column; align-items:center; gap:4px; }
+.photo-caption .date{ font-size:12px; color:#aa95a1; background:#f4edf7; padding:2px 10px; border-radius:12px; }
+.photo-caption .emoji{ font-size:22px; }
 
 /* =========================
    SCRATCH
 ========================= */
-
-.scratch-section{
-
-    padding:100px 20px 140px;
-
-    text-align:center;
-}
-
-.scratch-title{
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:50px;
-
-    font-weight:300;
-
-    margin-bottom:15px;
-}
-
-.scratch-subtitle{
-
-    color:#a18d88;
-
-    font-size:13px;
-
-    margin-bottom:45px;
-}
-
-.scratch-card{
-
-    position:relative;
-
-    width:min(700px,92%);
-
-    min-height:330px;
-
-    margin:auto;
-
-    background:#fffdfb;
-
-    border:1px solid #eaded9;
-
-    box-shadow:
-        0 20px 55px rgba(70,45,40,.13);
-
-    overflow:hidden;
-}
-
-.hidden-message{
-
-    padding:55px 35px;
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:27px;
-
-    line-height:2;
-
-    color:#4b3d3a;
-}
-
-.hidden-message .tiny{
-
-    font-size:18px;
-
-    color:#a18d88;
-}
-
-#scratchCanvas{
-
-    position:absolute;
-
-    inset:0;
-
-    width:100%;
-    height:100%;
-
-    cursor:crosshair;
-
-    touch-action:pan-y;
-}
-
-.scratch-hint{
-
-    margin-top:22px;
-
-    color:#9e8e89;
-
-    font-size:12px;
-
-    letter-spacing:1px;
-}
+.scratch-section{ padding:100px 20px 140px; text-align:center; }
+.scratch-title{ font-family:'Cormorant Garamond',serif; font-size:50px; font-weight:300; margin-bottom:15px; }
+.scratch-subtitle{ color:#a18d88; font-size:13px; margin-bottom:45px; }
+.scratch-card{ position:relative; width:min(700px,92%); min-height:330px; margin:auto; background:#fffdfb; border:1px solid #eaded9; box-shadow:0 20px 55px rgba(70,45,40,.13); overflow:hidden; }
+.hidden-message{ padding:55px 35px; font-family:'Cormorant Garamond',serif; font-size:27px; line-height:2; color:#4b3d3a; }
+.hidden-message .tiny{ font-size:18px; color:#a18d88; }
+#scratchCanvas{ position:absolute; inset:0; width:100%; height:100%; cursor:crosshair; touch-action:pan-y; }
+.scratch-hint{ margin-top:22px; color:#9e8e89; font-size:12px; letter-spacing:1px; }
 
 /* =========================
    GIFT
 ========================= */
-
-.gift-section{
-
-    min-height:75vh;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    padding:60px 20px 150px;
-}
-
-.gift-title{
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:48px;
-
-    font-weight:300;
-
-    margin-bottom:40px;
-}
-
-.gift{
-
-    position:relative;
-
-    width:170px;
-    height:145px;
-
-    cursor:pointer;
-
-    transition:.5s;
-}
-
-.gift:hover{
-    transform:translateY(-10px);
-}
-
-.gift-box{
-
-    position:absolute;
-
-    bottom:0;
-
-    width:170px;
-    height:105px;
-
-    background:#e6c9c2;
-
-    border-radius:4px;
-
-    box-shadow:
-        0 15px 30px rgba(70,40,35,.16);
-}
-
-.gift-lid{
-
-    position:absolute;
-
-    top:20px;
-    left:-8px;
-
-    width:186px;
-    height:35px;
-
-    background:#d8b4ac;
-
-    border-radius:4px;
-
-    z-index:2;
-}
-
-.ribbon-v{
-
-    position:absolute;
-
-    left:72px;
-    top:20px;
-
-    width:25px;
-    height:125px;
-
-    background:#f5e5df;
-
-    z-index:3;
-}
-
-.ribbon-h{
-
-    position:absolute;
-
-    top:67px;
-
-    width:170px;
-    height:20px;
-
-    background:#f5e5df;
-
-    z-index:4;
-}
-
-.bow{
-
-    position:absolute;
-
-    top:0;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    font-size:50px;
-
-    z-index:5;
-}
-
-.gift-note{
-
-    margin-top:35px;
-
-    color:#a18d88;
-
-    font-size:13px;
-
-    letter-spacing:2px;
-}
-
-/* =========================
-   MUSIC
-========================= */
-
-.music-note{
-
-    position:fixed;
-
-    right:18px;
-    bottom:18px;
-
-    border:1px solid #b9aaa5;
-
-    width:40px;
-    height:40px;
-
-    border-radius:50%;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    font-size:16px;
-
-    z-index:30;
-
-    background:#faf7f5cc;
-
-    backdrop-filter:blur(5px);
-}
-
-/* =========================
-   MOBILE
-========================= */
+.gift-section{ min-height:75vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:60px 20px 150px; }
+.gift-title{ font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:300; margin-bottom:40px; }
+.gift{ position:relative; width:170px; height:145px; cursor:pointer; transition:.5s; }
+.gift:hover{ transform:translateY(-10px); }
+.gift-box{ position:absolute; bottom:0; width:170px; height:105px; background:#e6c9c2; border-radius:4px; box-shadow:0 15px 30px rgba(70,40,35,.16); }
+.gift-lid{ position:absolute; top:20px; left:-8px; width:186px; height:35px; background:#d8b4ac; border-radius:4px; z-index:2; }
+.ribbon-v{ position:absolute; left:72px; top:20px; width:25px; height:125px; background:#f5e5df; z-index:3; }
+.ribbon-h{ position:absolute; top:67px; width:170px; height:20px; background:#f5e5df; z-index:4; }
+.bow{ position:absolute; top:0; left:50%; transform:translateX(-50%); font-size:50px; z-index:5; }
+.gift-note{ margin-top:35px; color:#a18d88; font-size:13px; letter-spacing:2px; }
+
+.music-note{ position:fixed; right:18px; bottom:18px; border:1px solid #b9aaa5; width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:16px; z-index:30; background:#faf7f5cc; backdrop-filter:blur(5px); }
 
 @media(max-width:650px){
-
-    #letterSection{
-        padding-top:75px;
-        padding-bottom:25px;
-    }
-
-    .letter-title{
-        font-size:18px;
-        margin-bottom:42px;
-    }
-
-    .envelope-wrap{
-        width:300px;
-        height:355px;
-    }
-
-    .envelope{
-        width:300px;
-        height:190px;
-    }
-
-    .envelope-front:before{
-        border-width:
-            95px 150px 0 0;
-    }
-
-    .envelope-front:after{
-        border-width:
-            95px 0 0 150px;
-    }
-
-    .paper{
-
-        width:255px;
-
-        height:205px;
-
-        padding:18px 20px;
-    }
-
-    .envelope-wrap.open .paper{
-
-        transform:
-            translate(-50%,-140px);
-    }
-
-    #paperText{
-
-        height:165px;
-
-        font-size:18px;
-
-        line-height:1.5;
-    }
-
-    .open-hint{
-        font-size:19px;
-        margin-top:0;
-    }
-
-    #loveMessage{
-        padding:
-            45px 22px 90px;
-    }
-
-    .message-title{
-        font-size:47px;
-    }
-
-    .message-text{
-        font-size:22px;
-    }
-
-    .gallery{
-        width:88%;
-        gap:70px;
-    }
-
-    .gallery-title{
-        font-size:43px;
-    }
-
-    .scratch-title{
-        font-size:42px;
-    }
-
-    .hidden-message{
-        font-size:23px;
-        padding:45px 22px;
-    }
+    #letterSection{ padding-top:75px; padding-bottom:25px; }
+    .envelope-wrap{ width:300px; height:355px; }
+    .envelope{ width:300px; height:190px; }
+    .paper{ width:255px; height:205px; padding:18px 20px; }
+    .envelope-wrap.open .paper{ transform:translate(-50%,-140px); }
+    #paperText{ height:165px; font-size:18px; }
+    .message-title{ font-size:47px; }
+    .message-text{ font-size:22px; }
+    .gallery{ width:88%; gap:70px; }
+    .gallery-title, .scratch-title{ font-size:42px; }
+    .hidden-message{ font-size:23px; padding:45px 22px; }
 }
-
 </style>
 </head>
 
 <body>
 
+<!-- LOCK / COUNTDOWN SCREEN -->
+<div id="lockScreen">
+    <div class="lock-title">منتظرك ♡</div>
+    <div class="countdown">
+        <div class="time-box"><div class="time-num" id="days">00</div><div class="time-label">يوم</div></div>
+        <div class="time-box"><div class="time-num" id="hours">00</div><div class="time-label">ساعة</div></div>
+        <div class="time-box"><div class="time-num" id="mins">00</div><div class="time-label">دقيقة</div></div>
+        <div class="time-box"><div class="time-num" id="secs">00</div><div class="time-label">ثانية</div></div>
+    </div>
+    <div class="pass-container">
+        <input type="password" id="passInput" class="pass-input" placeholder="اكتبي الباسورد..." />
+        <button id="loginBtn" class="login-btn">دخول ♡</button>
+    </div>
+</div>
+
+<!-- FLOWER OVERLAY -->
+<div id="flowerOverlay"></div>
+
 <!-- STARS -->
 <div id="stars"></div>
 
-
-<!-- FLOWER BURST -->
-<div id="flowerBurst"></div>
-
-
 <!-- MUSIC -->
 <audio id="music" preload="auto">
-
-    <source
-        src="./music.mp3"
-        type="audio/mpeg"
-    >
-
+    <source src="./music.mp3" type="audio/mpeg">
 </audio>
 
-
-<!-- MAIN -->
+<!-- MAIN CONTENT -->
 <main id="main">
-
-
-    <!-- =========================
-         ENVELOPE
-    ========================= -->
-
     <section id="letterSection">
-
         <div class="envelope-area">
-
-            <div class="letter-title">
-                THERE'S SOMETHING FOR YOU ♡
-            </div>
-
-
-            <div
-                class="envelope-wrap"
-                id="envelopeWrap"
-            >
-
-                <!-- PAPER -->
-
-                <div class="paper">
-
-                    <div id="paperText"></div>
-
-                </div>
-
-
-                <!-- ENVELOPE -->
-
+            <div class="letter-title">THERE'S SOMETHING FOR YOU ♡</div>
+            <div class="envelope-wrap" id="envelopeWrap">
+                <div class="paper"><div id="paperText"></div></div>
                 <div class="envelope">
-
                     <div class="flap"></div>
-
                     <div class="envelope-front"></div>
-
-                    <div
-                        class="heart"
-                        id="heart"
-                    >
-                        ♡
-                    </div>
-
+                    <div class="heart" id="heart">♡</div>
                 </div>
-
             </div>
-
-
-            <!-- OPEN HINT -->
-
-            <div class="open-hint">
-                افتحي الظرف ♡
-            </div>
-
+            <div class="open-hint">افتحي الظرف ♡</div>
         </div>
-
     </section>
-
-
-    <!-- =========================
-         LOVE MESSAGE
-    ========================= -->
 
     <section id="loveMessage">
-
-        <div class="message-small">
-            FOR THE ONE I LOVE
-        </div>
-
-        <h2 class="message-title">
-            إلى أجمل شخص في حياتي ♡
-        </h2>
-
+        <div class="message-small">FOR THE ONE I LOVE</div>
+        <h2 class="message-title">إلى أجمل شخص في حياتي ♡</h2>
         <div class="message-text">
-
-            مش عارف إذا كان الكلام ممكن يوصف
-            اللي جوايا فعلًا ولا لأ...
-
-            <br><br>
-
-            بس أنا عارف حاجة واحدة،
-            إن وجودك في حياتي خلّى حاجات كتير
-            ليها معنى أجمل.
-
-            <br><br>
-
-            يمكن مفيش كلام مثالي يكفي،
-            وممكن أفضل ساكت أوقات كتير،
-            لكن الحقيقة البسيطة هي...
-
-            <br>
-
-            <strong>
-                أنا بحب وجودك في حياتي أكتر مما تتخيلي. ♡
-            </strong>
-
+            مش عارف إذا كان الكلام ممكن يوصف اللي جوايا فعلًا ولا لأ...<br><br>
+            بس أنا عارف حاجة واحدة، إن وجودك في حياتي خلّى حاجات كتير ليها معنى أجمل.<br><br>
+            يمكن مفيش كلام مثالي يكفي، وممكن أفضل ساكت أوقات كتير، لكن الحقيقة البسيطة هي...<br>
+            <strong>أنا بحب وجودك في حياتي أكتر مما تتخيلي. ♡</strong>
         </div>
-
-        <div class="signature">
-            — منّي إليكِ، بكل حب
-        </div>
-
+        <div class="signature">— منّي إليكِ، بكل حب</div>
     </section>
-
-
-    <!-- =========================
-         TIMELINE GALLERY (6 PHOTOS)
-    ========================= -->
 
     <section class="gallery-section">
-
-        <div class="gallery-title">
-            ذكرياتنا ♡
-        </div>
-
+        <div class="gallery-title">ذكرياتنا ♡</div>
         <div class="gallery">
-
             <div class="photo">
                 <img src="./photo1.jpg" alt="ذكرياتنا" onerror="this.style.display='none';">
-                <div class="photo-caption">
-                    <span>أول خروجة لينا فاكرة؟</span>
-                    <span class="date">2025-10-16</span>
-                </div>
+                <div class="photo-caption"><span>أول خروجة لينا فاكرة؟</span><span class="date">2025-10-16</span></div>
             </div>
-
             <div class="photo">
                 <img src="./photo2.jpg" alt="ذكرياتنا" onerror="this.style.display='none';">
-                <div class="photo-caption">
-                    <span class="emoji">😍</span>
-                </div>
+                <div class="photo-caption"><span class="emoji">😍</span></div>
             </div>
-
             <div class="photo">
                 <img src="./photo3.jpg" alt="ذكرياتنا" onerror="this.style.display='none';">
-                <div class="photo-caption">
-                    <span>أحلى يوم سوا ♡</span>
-                </div>
+                <div class="photo-caption"><span>أحلى يوم سوا ♡</span></div>
             </div>
-
             <div class="photo">
                 <img src="./photo4.jpg" alt="ذكرياتنا" onerror="this.style.display='none';">
-                <div class="photo-caption">
-                    <span class="emoji">✨❤️</span>
-                </div>
+                <div class="photo-caption"><span class="emoji">✨❤️</span></div>
             </div>
-
             <div class="photo">
                 <img src="./photo5.jpg" alt="ذكرياتنا" onerror="this.style.display='none';">
-                <div class="photo-caption">
-                    <span>ضحكتك هي كل حاجة</span>
-                </div>
+                <div class="photo-caption"><span>ضحكتك هي كل حاجة</span></div>
             </div>
-
             <div class="photo">
                 <img src="./photo6.jpg" alt="ذكرياتنا" onerror="this.style.display='none';">
-                <div class="photo-caption">
-                    <span class="emoji">👩‍❤️‍👨</span>
-                </div>
+                <div class="photo-caption"><span class="emoji">👩‍❤️‍👨</span></div>
             </div>
-
         </div>
-
     </section>
-
-
-    <!-- =========================
-         SCRATCH MESSAGE
-    ========================= -->
 
     <section class="scratch-section">
-
-        <div class="scratch-title">
-            حاجة صغيرة ليكي... ♡
-        </div>
-
-        <div class="scratch-subtitle">
-            مش هقولك هي إيه... اكتشفيها بنفسك
-        </div>
-
-
+        <div class="scratch-title">حاجة صغيرة ليكي... ♡</div>
+        <div class="scratch-subtitle">مش هقولك هي إيه... اكتشفيها بنفسك</div>
         <div class="scratch-card">
-
             <div class="hidden-message">
-
-                <div class="tiny">
-                    لو وصلتي لهنا...
-                </div>
-
-                <br>
-
-                فأنا عايزك تعرفي إنك
-                مش مجرد شخص عدى في حياتي...
-
-                <br>
-
-                إنتِ ذكرى جميلة أتمنى
-                تفضل موجودة جوايا دايمًا.
-
-                <br><br>
-
-                <strong>
-                    وأنا محظوظ إني عرفتك. ❤️
-                </strong>
-
+                <div class="tiny">لو وصلتي لهنا...</div><br>
+                فأنا عايزك تعرفي إنك مش مجرد شخص عدى في حياتي...<br>
+                إنتِ ذكرى جميلة أتمنى تفضل موجودة جوايا دايمًا.<br><br>
+                <strong>وأنا محظوظ إني عرفتك. ❤️</strong>
             </div>
-
-
             <canvas id="scratchCanvas"></canvas>
-
         </div>
-
-
-        <div class="scratch-hint">
-            ✦ حرّكي صباعك على الشاشة عشان تكشفي الرسالة ✦
-        </div>
-
+        <div class="scratch-hint">✦ حرّكي صباعك على الشاشة عشان تكشفي الرسالة ✦</div>
     </section>
-
-
-    <!-- =========================
-         GIFT
-    ========================= -->
 
     <section class="gift-section">
-
-        <div class="gift-title">
-            ولسه في حاجة أخيرة... 🎁
-        </div>
-
-
-        <div
-            class="gift"
-            id="gift"
-        >
-
-            <div class="bow">
-                🎀
-            </div>
-
+        <div class="gift-title">ولسه في حاجة أخيرة... 🎁</div>
+        <div class="gift" id="gift">
+            <div class="bow">🎀</div>
             <div class="gift-lid"></div>
-
             <div class="gift-box"></div>
-
             <div class="ribbon-v"></div>
-
             <div class="ribbon-h"></div>
-
         </div>
-
-
-        <div class="gift-note">
-            اضغطي على الهدية ♡
-        </div>
-
+        <div class="gift-note">اضغطي على الهدية ♡</div>
     </section>
-
 </main>
 
-
-<div class="music-note">
-    ♫
-</div>
-
+<div class="music-note">♫</div>
 
 <script>
+/* =========================
+   ELEMENTS & CONFIG
+========================= */
+const CORRECT_PASSWORD = "1234"; // الباسورد هنا
+const lockScreen = document.getElementById("lockScreen");
+const passInput = document.getElementById("passInput");
+const loginBtn = document.getElementById("loginBtn");
+const flowerOverlay = document.getElementById("flowerOverlay");
+const music = document.getElementById("music");
+const envelopeWrap = document.getElementById("envelopeWrap");
+const heart = document.getElementById("heart");
+const stars = document.getElementById("stars");
+const paperText = document.getElementById("paperText");
 
 /* =========================
-   ELEMENTS
+   COUNTDOWN TIMER
 ========================= */
+const targetDate = new Date().getTime() + (2 * 24 * 60 * 60 * 1000); // وقت افتراضي
 
-const main =
-    document.getElementById("main");
+function updateCountdown(){
+    const now = new Date().getTime();
+    const diff = targetDate - now;
 
-const music =
-    document.getElementById("music");
+    if(diff > 0){
+        document.getElementById("days").innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+        document.getElementById("hours").innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+        document.getElementById("mins").innerText = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+        document.getElementById("secs").innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+    }
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
 
-const envelopeWrap =
-    document.getElementById("envelopeWrap");
+/* =========================
+   LOGIN & TRIGGER ACTION
+========================= */
+loginBtn.addEventListener("click", () => {
+    if(passInput.value === CORRECT_PASSWORD){
+        // 1. إخفاء شاشة الباسورد
+        lockScreen.style.opacity = "0";
+        lockScreen.style.visibility = "hidden";
 
-const heart =
-    document.getElementById("heart");
+        // 2. تشغيل الأغنية فوراً
+        music.currentTime = 0;
+        music.volume = 0.8;
+        music.play().catch(() => {});
 
-const stars =
-    document.getElementById("stars");
+        // 3. إظهار صورة الورد فوراً ثم إخفاؤها
+        flowerOverlay.classList.add("active");
+        setTimeout(() => {
+            flowerOverlay.classList.remove("active");
+        }, 2000);
 
-const flowerBurst =
-    document.getElementById("flowerBurst");
-
-const paperText =
-    document.getElementById("paperText");
-
+        // 4. تشغيل تساقط البتلات
+        startPetals();
+    } else {
+        alert("الباسورد مش صح ♡");
+    }
+});
 
 /* =========================
    STARS
 ========================= */
-
 for(let i = 0; i < 55; i++){
-
-    const star =
-        document.createElement("div");
-
+    const star = document.createElement("div");
     star.className = "star";
-
-    const symbols = [
-        "✦",
-        "✧",
-        "⋆",
-        "·",
-        "♡"
-    ];
-
-    star.textContent =
-        symbols[
-            Math.floor(
-                Math.random() *
-                symbols.length
-            )
-        ];
-
-    star.style.left =
-        Math.random() * 100 + "vw";
-
-    star.style.top =
-        Math.random() * 100 + "vh";
-
-    star.style.fontSize =
-        (7 + Math.random() * 12) + "px";
-
-    star.style.animationDelay =
-        Math.random() * 5 + "s";
-
-    star.style.animationDuration =
-        (3 + Math.random() * 5) + "s";
-
+    const symbols = ["✦", "✧", "⋆", "·", "♡"];
+    star.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.top = Math.random() * 100 + "vh";
+    star.style.fontSize = (7 + Math.random() * 12) + "px";
+    star.style.animationDelay = Math.random() * 5 + "s";
+    star.style.animationDuration = (3 + Math.random() * 5) + "s";
     stars.appendChild(star);
 }
-
 
 /* =========================
    FALLING PETALS
 ========================= */
-
 function createPetal(){
-
-    const p =
-        document.createElement("div");
-
+    const p = document.createElement("div");
     p.className = "petal";
-
-    p.textContent =
-        Math.random() > .45
-        ? "♡"
-        : "✦";
-
-    p.style.left =
-        Math.random() * 100 + "vw";
-
-    p.style.setProperty(
-        "--drift",
-        (-100 + Math.random() * 200) + "px"
-    );
-
-    p.style.animationDuration =
-        (7 + Math.random() * 8) + "s";
-
-    p.style.fontSize =
-        (9 + Math.random() * 15) + "px";
-
+    p.textContent = Math.random() > .45 ? "♡" : "✦";
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.setProperty("--drift", (-100 + Math.random() * 200) + "px");
+    p.style.animationDuration = (7 + Math.random() * 8) + "s";
+    p.style.fontSize = (9 + Math.random() * 15) + "px";
     document.body.appendChild(p);
-
-    setTimeout(() => {
-        p.remove();
-    },16000);
+    setTimeout(() => { p.remove(); }, 16000);
 }
 
-
-/* =========================
-   FLOWER EXPLOSION
-========================= */
-
-function flowerExplosion(){
-
-    flowerBurst.style.display = "block";
-
-    const flowers = [
-        "🌹",
-        "🌸",
-        "🌷",
-        "🌺",
-        "🌹",
-        "💗",
-        "🌸",
-        "🌷"
-    ];
-
-    for(let i = 0; i < 70; i++){
-
-        const flower =
-            document.createElement("div");
-
-        flower.className =
-            "burst-flower";
-
-        flower.textContent =
-            flowers[
-                Math.floor(
-                    Math.random() *
-                    flowers.length
-                )
-            ];
-
-        const angle =
-            Math.random() *
-            Math.PI * 2;
-
-        const distance =
-            250 +
-            Math.random() * 650;
-
-        const x =
-            Math.cos(angle) *
-            distance;
-
-        const y =
-            Math.sin(angle) *
-            distance;
-
-        flower.style.setProperty(
-            "--x",
-            x + "px"
-        );
-
-        flower.style.setProperty(
-            "--y",
-            y + "px"
-        );
-
-        flower.style.setProperty(
-            "--scale",
-            .5 + Math.random() * 1.5
-        );
-
-        flower.style.setProperty(
-            "--rotate",
-            (-180 + Math.random() * 360) + "deg"
-        );
-
-        flower.style.animationDelay =
-            Math.random() * .4 + "s";
-
-        flowerBurst.appendChild(flower);
+function startPetals(){
+    for(let i = 0; i < 15; i++){
+        setTimeout(createPetal, i * 250);
     }
-
-    setTimeout(() => {
-
-        flowerBurst.innerHTML = "";
-
-        flowerBurst.style.display = "none";
-
-    },3300);
+    const interval = setInterval(createPetal, 850);
+    setTimeout(() => { clearInterval(interval); }, 18000);
 }
 
-
 /* =========================
-   ON LOAD INIT
+   LETTER TYPEWRITER
 ========================= */
-
-window.addEventListener("load", () => {
-    /* الموسيقى تبدأ فور الفتح */
-    music.currentTime = 0;
-    music.loop = false;
-    music.volume = .8;
-    music.play().catch(() => {});
-
-    /* الورد */
-    flowerExplosion();
-
-    /* بتلات أولية */
-    for(let i = 0; i < 18; i++){
-        setTimeout(() => {
-            createPetal();
-        }, i * 250);
-    }
-
-    /* بتلات مستمرة */
-    const petalInterval = setInterval(createPetal, 850);
-
-    setTimeout(() => {
-        clearInterval(petalInterval);
-    }, 18000);
-});
-
-
-/* =========================
-   LETTER
-========================= */
-
-const letterText =
-`إلى الشخص اللي وجوده
+const letterText = `إلى الشخص اللي وجوده
 خلّى أيامي أجمل...
 
 يمكن مش بعرف أقول كل اللي جوايا،
@@ -1567,455 +672,84 @@ const letterText =
 ومتنسيش إن في حد
 بيتمنى يشوفك مبسوطة دايمًا. ♡`;
 
-
-/* =========================
-   TYPEWRITER
-========================= */
-
 function typeLetter(){
-
     paperText.innerHTML = "";
-
     let index = 0;
-
     function write(){
-
         if(index < letterText.length){
-
-            const char =
-                letterText[index];
-
-            if(char === "\n"){
-
-                paperText.innerHTML += "<br>";
-
-            }else{
-
-                paperText.innerHTML +=
-                    char === " "
-                    ? "&nbsp;"
-                    : char;
-            }
-
+            const char = letterText[index];
+            paperText.innerHTML += (char === "\n") ? "<br>" : ((char === " ") ? "&nbsp;" : char);
             index++;
-
-            setTimeout(
-                write,
-                45
-            );
-
+            setTimeout(write, 45);
         }
-
     }
-
     write();
 }
 
-
-/* =========================
-   OPEN ENVELOPE
-========================= */
-
-heart.addEventListener(
-    "click",
-    function(){
-
-        if(
-            envelopeWrap.classList.contains("open")
-        ){
-            return;
-        }
-
-        envelopeWrap.classList.add("open");
-
-
-        /* الورقة تطلع ثم تبدأ الكتابة */
-
-        setTimeout(() => {
-
-            typeLetter();
-
-        },1200);
-
-    }
-);
-
+heart.addEventListener("click", function(){
+    if(envelopeWrap.classList.contains("open")) return;
+    envelopeWrap.classList.add("open");
+    setTimeout(typeLetter, 1200);
+});
 
 /* =========================
    SCRATCH CARD
 ========================= */
-
-const canvas =
-    document.getElementById("scratchCanvas");
-
-const ctx =
-    canvas.getContext("2d");
-
-const scratchCard =
-    document.querySelector(".scratch-card");
-
+const canvas = document.getElementById("scratchCanvas");
+const ctx = canvas.getContext("2d");
+const scratchCard = document.querySelector(".scratch-card");
 
 function setupScratch(){
+    const rect = scratchCard.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    canvas.style.width = rect.width + "px";
+    canvas.style.height = rect.height + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    const rect =
-        scratchCard.getBoundingClientRect();
-
-    const dpr =
-        window.devicePixelRatio || 1;
-
-
-    canvas.width =
-        rect.width * dpr;
-
-    canvas.height =
-        rect.height * dpr;
-
-
-    canvas.style.width =
-        rect.width + "px";
-
-    canvas.style.height =
-        rect.height + "px";
-
-
-    ctx.setTransform(
-        dpr,
-        0,
-        0,
-        dpr,
-        0,
-        0
-    );
-
-
-    const gradient =
-        ctx.createLinearGradient(
-            0,
-            0,
-            rect.width,
-            rect.height
-        );
-
-
-    gradient.addColorStop(
-        0,
-        "#c8bbb6"
-    );
-
-    gradient.addColorStop(
-        .5,
-        "#b8aaa5"
-    );
-
-    gradient.addColorStop(
-        1,
-        "#d3c7c2"
-    );
-
+    const gradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
+    gradient.addColorStop(0, "#c8bbb6");
+    gradient.addColorStop(.5, "#b8aaa5");
+    gradient.addColorStop(1, "#d3c7c2");
 
     ctx.fillStyle = gradient;
-
-
-    ctx.fillRect(
-        0,
-        0,
-        rect.width,
-        rect.height
-    );
-
-
-    ctx.fillStyle =
-        "rgba(255,255,255,.8)";
-
-    ctx.font =
-        "16px Tajawal";
-
-    ctx.textAlign =
-        "center";
-
-    ctx.fillText(
-        "♡  اخدشي هنا  ♡",
-        rect.width / 2,
-        rect.height / 2
-    );
-
-
-    ctx.globalAlpha = .15;
-
-
-    for(let i = 0; i < 25; i++){
-
-        ctx.beginPath();
-
-        ctx.arc(
-            Math.random() * rect.width,
-            Math.random() * rect.height,
-            2 + Math.random() * 5,
-            0,
-            Math.PI * 2
-        );
-
-        ctx.fillStyle = "#ffffff";
-
-        ctx.fill();
-
-    }
-
-
-    ctx.globalAlpha = 1;
+    ctx.fillRect(0, 0, rect.width, rect.height);
+    ctx.fillStyle = "rgba(255,255,255,.8)";
+    ctx.font = "16px Tajawal";
+    ctx.textAlign = "center";
+    ctx.fillText("♡  اخدشي هنا  ♡", rect.width / 2, rect.height / 2);
 }
-
-
-/* =========================
-   SCRATCH SYSTEM
-========================= */
 
 let scratching = false;
-
-let touchStartX = 0;
-let touchStartY = 0;
-
-let touchDirection = null;
-
-
-/* position */
-
-function getPosition(e){
-
-    const rect =
-        canvas.getBoundingClientRect();
-
-    let clientX;
-    let clientY;
-
-    if(e.touches && e.touches.length){
-
-        clientX =
-            e.touches[0].clientX;
-
-        clientY =
-            e.touches[0].clientY;
-
-    }else{
-
-        clientX =
-            e.clientX;
-
-        clientY =
-            e.clientY;
-
-    }
-
-    return {
-        x:clientX - rect.left,
-        y:clientY - rect.top
-    };
+function getPos(e){
+    const rect = canvas.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    return { x: clientX - rect.left, y: clientY - rect.top };
 }
-
-
-/* scratch */
 
 function scratch(e){
-
-    if(!scratching){
-        return;
-    }
-
-    const pos =
-        getPosition(e);
-
-    ctx.globalCompositeOperation =
-        "destination-out";
-
+    if(!scratching) return;
+    const pos = getPos(e);
+    ctx.globalCompositeOperation = "destination-out";
     ctx.beginPath();
-
-    ctx.arc(
-        pos.x,
-        pos.y,
-        25,
-        0,
-        Math.PI * 2
-    );
-
+    ctx.arc(pos.x, pos.y, 25, 0, Math.PI * 2);
     ctx.fill();
-
-    ctx.globalCompositeOperation =
-        "source-over";
 }
 
+canvas.addEventListener("mousedown", () => scratching = true);
+canvas.addEventListener("mousemove", scratch);
+window.addEventListener("mouseup", () => scratching = false);
 
-/* =========================
-   MOUSE
-========================= */
+canvas.addEventListener("touchstart", () => scratching = true);
+canvas.addEventListener("touchmove", scratch);
+canvas.addEventListener("touchend", () => scratching = false);
 
-canvas.addEventListener(
-    "mousedown",
-    function(){
+window.addEventListener("load", setupScratch);
+window.addEventListener("resize", setupScratch);
 
-        scratching = true;
-
-    }
-);
-
-
-canvas.addEventListener(
-    "mousemove",
-    function(e){
-
-        if(scratching){
-            scratch(e);
-        }
-
-    }
-);
-
-
-window.addEventListener(
-    "mouseup",
-    function(){
-
-        scratching = false;
-
-    }
-);
-
-
-/* =========================
-   TOUCH
-========================= */
-
-canvas.addEventListener(
-    "touchstart",
-    function(e){
-
-        if(!e.touches.length){
-            return;
-        }
-
-        touchStartX =
-            e.touches[0].clientX;
-
-        touchStartY =
-            e.touches[0].clientY;
-
-        touchDirection = null;
-
-        scratching = false;
-
-    },
-    {
-        passive:true
-    }
-);
-
-
-canvas.addEventListener(
-    "touchmove",
-    function(e){
-
-        if(!e.touches.length){
-            return;
-        }
-
-        const currentX =
-            e.touches[0].clientX;
-
-        const currentY =
-            e.touches[0].clientY;
-
-        const dx =
-            currentX - touchStartX;
-
-        const dy =
-            currentY - touchStartY;
-
-
-        if(!touchDirection){
-
-            if(
-                Math.abs(dx) < 8 &&
-                Math.abs(dy) < 8
-            ){
-                return;
-            }
-
-            if(Math.abs(dx) > Math.abs(dy)){
-
-                touchDirection = "scratch";
-
-                scratching = true;
-
-            }else{
-
-                touchDirection = "scroll";
-
-                scratching = false;
-
-            }
-
-        }
-
-
-        if(touchDirection === "scratch"){
-
-            e.preventDefault();
-
-            scratch(e);
-
-        }
-
-    },
-    {
-        passive:false
-    }
-);
-
-
-canvas.addEventListener(
-    "touchend",
-    function(){
-
-        scratching = false;
-
-        touchDirection = null;
-
-    }
-);
-
-
-/* =========================
-   SCRATCH SETUP
-========================= */
-
-window.addEventListener(
-    "load",
-    setupScratch
-);
-
-window.addEventListener(
-    "resize",
-    setupScratch
-);
-
-
-/* =========================
-   GIFT
-========================= */
-
-document
-.getElementById("gift")
-.addEventListener(
-    "click",
-    function(){
-
-        alert(
-            "أنتِ أجمل هدية أصلًا ❤️"
-        );
-
-    }
-);
-
+document.getElementById("gift").addEventListener("click", () => alert("أنتِ أجمل هدية أصلًا ❤️"));
 </script>
-
 </body>
 </html>
