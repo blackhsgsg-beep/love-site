@@ -144,154 +144,13 @@ body{
 }
 
 /* =========================
-   COUNTDOWN
-========================= */
-
-#intro{
-    position:fixed;
-    inset:0;
-    z-index:200;
-    background:#faf7f5;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    transition:opacity 1.2s ease;
-}
-
-#count{
-    font-family:'Cormorant Garamond',serif;
-    font-size:150px;
-    font-weight:300;
-    letter-spacing:10px;
-    color:#403938;
-
-    animation:pulse .9s ease;
-}
-
-@keyframes pulse{
-
-    0%{
-        opacity:0;
-        transform:scale(.65);
-    }
-
-    50%{
-        opacity:1;
-        transform:scale(1.08);
-    }
-
-    100%{
-        opacity:1;
-        transform:scale(1);
-    }
-}
-
-/* =========================
-   PASSWORD
-========================= */
-
-#lock{
-    position:fixed;
-    inset:0;
-    z-index:190;
-
-    background:rgba(250,247,245,.98);
-
-    display:none;
-
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-    padding:25px;
-
-    transition:opacity 1s ease;
-}
-
-.lock-box{
-    max-width:390px;
-    width:100%;
-}
-
-.small{
-    font-size:12px;
-    letter-spacing:4px;
-    color:#9b8883;
-}
-
-.lock-box h1{
-    font-family:'Cormorant Garamond',serif;
-    font-size:52px;
-    font-weight:300;
-    margin:15px 0 30px;
-}
-
-#password{
-    width:100%;
-
-    border:0;
-    border-bottom:1px solid #b9aaa5;
-
-    background:transparent;
-
-    padding:14px 5px;
-
-    text-align:center;
-
-    font-family:'Tajawal';
-    font-size:17px;
-
-    outline:none;
-
-    color:#403938;
-}
-
-#password::placeholder{
-    color:#b5a7a2;
-}
-
-#enter{
-    margin-top:28px;
-
-    border:1px solid #9e8e89;
-
-    background:transparent;
-
-    padding:11px 34px;
-
-    border-radius:30px;
-
-    font-family:'Tajawal';
-
-    cursor:pointer;
-
-    color:#403938;
-
-    transition:.3s;
-}
-
-#enter:hover{
-    background:#403938;
-    color:white;
-}
-
-#error{
-    height:20px;
-    color:#a36f6b;
-    font-size:12px;
-    margin-top:12px;
-}
-
-/* =========================
    MAIN
 ========================= */
 
 #main{
     min-height:100vh;
 
-    opacity:0;
+    opacity:1;
 
     transition:opacity 2s ease;
 
@@ -1072,6 +931,8 @@ body{
     background:#faf7f5cc;
 
     backdrop-filter:blur(5px);
+
+    cursor:pointer;
 }
 
 /* =========================
@@ -1079,14 +940,6 @@ body{
 ========================= */
 
 @media(max-width:650px){
-
-    #count{
-        font-size:145px;
-    }
-
-    .lock-box h1{
-        font-size:44px;
-    }
 
     #letterSection{
         padding-top:75px;
@@ -1186,47 +1039,6 @@ body{
 
 <!-- STARS -->
 <div id="stars"></div>
-
-
-<!-- COUNTDOWN -->
-<div id="intro">
-
-    <div id="count">
-        3
-    </div>
-
-</div>
-
-
-<!-- PASSWORD -->
-<div id="lock">
-
-    <div class="lock-box">
-
-        <div class="small">
-            A LITTLE SECRET
-        </div>
-
-        <h1>
-            Just for us ♡
-        </h1>
-
-        <input
-            id="password"
-            type="password"
-            placeholder="اكتب كلمة السر"
-            autocomplete="off"
-        >
-
-        <button id="enter">
-            دخول ♡
-        </button>
-
-        <div id="error"></div>
-
-    </div>
-
-</div>
 
 
 <!-- FLOWER BURST -->
@@ -1506,7 +1318,7 @@ body{
 </main>
 
 
-<div class="music-note">
+<div class="music-note" id="musicBtn">
     ♫
 </div>
 
@@ -1514,39 +1326,17 @@ body{
 <script>
 
 /* =========================
-   PASSWORD
-========================= */
-
-const SECRET = "oursecret";
-
-
-/* =========================
    ELEMENTS
 ========================= */
-
-const intro =
-    document.getElementById("intro");
-
-const count =
-    document.getElementById("count");
-
-const lock =
-    document.getElementById("lock");
 
 const main =
     document.getElementById("main");
 
-const password =
-    document.getElementById("password");
-
-const enter =
-    document.getElementById("enter");
-
-const error =
-    document.getElementById("error");
-
 const music =
     document.getElementById("music");
+
+const musicBtn =
+    document.getElementById("musicBtn");
 
 const envelopeWrap =
     document.getElementById("envelopeWrap");
@@ -1736,137 +1526,18 @@ function flowerExplosion(){
 
 
 /* =========================
-   COUNTDOWN
+   MUSIC TOGGLE
 ========================= */
 
-let n = 3;
-
-const timer =
-    setInterval(() => {
-
-        n--;
-
-        if(n > 0){
-
-            count.textContent = n;
-
-            count.style.animation = "none";
-
-            void count.offsetWidth;
-
-            count.style.animation =
-                "pulse .9s ease";
-
-        }else{
-
-            clearInterval(timer);
-
-            intro.style.opacity = "0";
-
-            setTimeout(() => {
-
-                intro.style.display = "none";
-
-                lock.style.display = "flex";
-
-            },1100);
-
-        }
-
-    },1000);
-
-
-/* =========================
-   UNLOCK
-========================= */
-
-function unlock(){
-
-    if(password.value.trim() === SECRET){
-
-        /* الموسيقى تبدأ فور الضغط */
-
+musicBtn.addEventListener("click", () => {
+    if (music.paused) {
         music.currentTime = 0;
-        music.loop = false;
         music.volume = .8;
-
         music.play().catch(() => {});
-
-
-        /* الورد */
-
-        flowerExplosion();
-
-
-        /* بتلات أولية */
-
-        for(let i = 0; i < 18; i++){
-
-            setTimeout(() => {
-                createPetal();
-            },i * 250);
-
-        }
-
-
-        /* بتلات مستمرة */
-
-        const petalInterval =
-            setInterval(
-                createPetal,
-                850
-            );
-
-
-        setTimeout(() => {
-
-            clearInterval(
-                petalInterval
-            );
-
-        },18000);
-
-
-        lock.style.opacity = "0";
-
-
-        setTimeout(() => {
-
-            lock.style.display = "none";
-
-            main.style.opacity = "1";
-
-        },700);
-
-    }else{
-
-        error.textContent =
-            "كلمة السر مش صحيحة ♡";
-
-        password.value = "";
-
-        password.focus();
-
+    } else {
+        music.pause();
     }
-}
-
-
-enter.addEventListener(
-    "click",
-    unlock
-);
-
-
-password.addEventListener(
-    "keydown",
-    function(e){
-
-        if(e.key === "Enter"){
-            unlock();
-        }
-
-    }
-);
+});
 
 
 /* =========================
@@ -1947,6 +1618,11 @@ heart.addEventListener(
 
         envelopeWrap.classList.add("open");
 
+        /* تشغيل الموسيقى والورد عند فتح الظرف */
+        music.currentTime = 0;
+        music.volume = .8;
+        music.play().catch(() => {});
+        flowerExplosion();
 
         /* الورقة تطلع ثم تبدأ الكتابة */
 
@@ -2249,10 +1925,6 @@ canvas.addEventListener(
             currentY - touchStartY;
 
 
-        /*
-           نحدد اتجاه الحركة
-        */
-
         if(!touchDirection){
 
             if(
@@ -2264,21 +1936,11 @@ canvas.addEventListener(
 
             if(Math.abs(dx) > Math.abs(dy)){
 
-                /*
-                   حركة أفقية
-                   = خدش
-                */
-
                 touchDirection = "scratch";
 
                 scratching = true;
 
             }else{
-
-                /*
-                   حركة رأسية
-                   = Scroll
-                */
 
                 touchDirection = "scroll";
 

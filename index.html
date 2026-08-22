@@ -7,64 +7,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Tajawal:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{
-    min-height:100vh;
-    background:#faf7f5;
-    color:#403938;
-    font-family:'Tajawal',sans-serif;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-    overflow:hidden;
-}
+body{min-height:100vh;background:#faf7f5;color:#403938;font-family:'Tajawal',sans-serif;display:flex;align-items:center;justify-content:center;padding:20px;overflow:hidden}
 
-/* خلفية النجوم الهادئة */
 #stars{position:fixed;inset:0;pointer-events:none;z-index:1}
 .star{position:absolute;color:#9b8580;opacity:0;animation:twinkle 4s infinite ease-in-out}
 @keyframes twinkle{0%,100%{opacity:0;transform:scale(.6)}50%{opacity:.75;transform:scale(1.2)}}
 
+/* العد التنازلي */
+#intro{position:fixed;inset:0;z-index:200;background:#faf7f5;display:flex;align-items:center;justify-content:center;transition:opacity 1.2s ease}
+#count{font-family:'Cormorant Garamond',serif;font-size:150px;font-weight:300;letter-spacing:10px;color:#403938;animation:pulse .9s ease}
+@keyframes pulse{0%{opacity:0;transform:scale(.65)}50%{opacity:1;transform:scale(1.08)}100%{opacity:1;transform:scale(1)}}
+
 /* صندوق الباسورد */
-.lock-box{
-    position:relative;
-    z-index:2;
-    max-width:390px;
-    width:100%;
-    text-align:center;
-    background:rgba(250,247,245,.85);
-    backdrop-filter:blur(8px);
-    padding:40px 25px;
-    border-radius:20px;
-    border:1px solid #eaded9;
-    box-shadow:0 15px 35px rgba(70,45,40,.08);
-}
+#lock{display:none;position:relative;z-index:2;max-width:390px;width:100%;text-align:center;background:rgba(250,247,245,.85);backdrop-filter:blur(8px);padding:40px 25px;border-radius:20px;border:1px solid #eaded9;box-shadow:0 15px 35px rgba(70,45,40,.08)}
 .small{font-size:12px;letter-spacing:4px;color:#9b8883;margin-bottom:10px}
-.lock-box h1{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;margin-bottom:25px}
-#password{
-    width:100%;
-    border:0;
-    border-bottom:1px solid #b9aaa5;
-    background:transparent;
-    padding:12px 5px;
-    text-align:center;
-    font-family:'Tajawal',sans-serif;
-    font-size:17px;
-    outline:none;
-    color:#403938;
-}
+#lock h1{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;margin-bottom:25px}
+#password{width:100%;border:0;border-bottom:1px solid #b9aaa5;background:transparent;padding:12px 5px;text-align:center;font-family:'Tajawal',sans-serif;font-size:17px;outline:none;color:#403938}
 #password::placeholder{color:#b5a7a2}
-#enter{
-    margin-top:28px;
-    border:1px solid #9e8e89;
-    background:transparent;
-    padding:11px 38px;
-    border-radius:30px;
-    font-family:'Tajawal',sans-serif;
-    cursor:pointer;
-    color:#403938;
-    transition:.3s;
-    font-size:15px;
-}
+#enter{margin-top:28px;border:1px solid #9e8e89;background:transparent;padding:11px 38px;border-radius:30px;font-family:'Tajawal',sans-serif;cursor:pointer;color:#403938;transition:.3s;font-size:15px}
 #enter:hover{background:#403938;color:#fff}
 #error{height:20px;color:#a36f6b;font-size:13px;margin-top:15px}
 </style>
@@ -73,7 +33,13 @@ body{
 
 <div id="stars"></div>
 
-<div class="lock-box">
+<!-- العد التنازلي -->
+<div id="intro">
+    <div id="count">3</div>
+</div>
+
+<!-- تسجيل الدخول -->
+<div id="lock">
     <div class="small">A LITTLE SECRET</div>
     <h1>Just for us ♡</h1>
     <input id="password" type="password" placeholder="اكتب كلمة السر" autocomplete="off">
@@ -82,13 +48,12 @@ body{
 </div>
 
 <script>
-// إنشاء النجوم في الخلفية
+// النجوم
 const stars = document.getElementById("stars");
 for(let i = 0; i < 40; i++){
     const star = document.createElement("div");
     star.className = "star";
-    const symbols = ["✦", "✧", "⋆", "·", "♡"];
-    star.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    star.textContent = ["✦", "✧", "⋆", "·", "♡"][Math.floor(Math.random() * 5)];
     star.style.left = Math.random() * 100 + "vw";
     star.style.top = Math.random() * 100 + "vh";
     star.style.fontSize = (7 + Math.random() * 12) + "px";
@@ -97,29 +62,42 @@ for(let i = 0; i < 40; i++){
     stars.appendChild(star);
 }
 
-// كلمة السر والتحويل للصفحة الجديدة
-const SECRET = "oursecret"; 
+// تشغيل العد التنازلي
+let n = 3;
+const count = document.getElementById("count");
+const intro = document.getElementById("intro");
+const lock = document.getElementById("lock");
 
+const timer = setInterval(() => {
+    n--;
+    if(n > 0){
+        count.textContent = n;
+        count.style.animation = "none";
+        void count.offsetWidth;
+        count.style.animation = "pulse .9s ease";
+    }else{
+        clearInterval(timer);
+        intro.style.opacity = "0";
+        setTimeout(() => {
+            intro.style.display = "none";
+            lock.style.display = "block";
+        }, 1100);
+    }
+}, 1000);
+
+// التحقق من كلمة السر
+const SECRET = "oursecret"; 
 function unlock(){
     const passInput = document.getElementById("password");
-    const errorMsg = document.getElementById("error");
-
     if(passInput.value.trim() === SECRET){
-        // التوجيه فوراً لصفحة المفاجأة الحقيقية
         window.location.href = "m92_love.html";
     } else {
-        errorMsg.textContent = "كلمة السر مش صحيحة ♡";
+        document.getElementById("error").textContent = "كلمة السر مش صحيحة ♡";
         passInput.value = "";
         passInput.focus();
     }
 }
-
-// التوجيه عند الضغط على زر Enter من الكيبورد
-document.getElementById("password").addEventListener("keydown", function(e){
-    if(e.key === "Enter"){
-        unlock();
-    }
-});
+document.getElementById("password").addEventListener("keydown", (e) => { if(e.key === "Enter") unlock(); });
 </script>
 
 </body>
